@@ -7,6 +7,8 @@ import type {
   Security,
   Validations,
   CategoryData,
+  Tag,
+  TagData,
   PermissionData,
   VisibilityData,
   ColorData,
@@ -16,6 +18,7 @@ import type {
 
 export interface BackendData {
   projectCategories: Map<Category, CategoryData>;
+  tags: Map<Tag, TagData>;
   permissions: Map<NamedPermission, PermissionData>;
   validations: Validations;
   prompts: Map<Prompt, PromptData>;
@@ -32,6 +35,7 @@ export interface BackendData {
 
 export interface ServerBackendData {
   projectCategories: CategoryData[];
+  tags: TagData[];
   permissions: PermissionData[];
   validations: Validations;
   prompts: PromptData[];

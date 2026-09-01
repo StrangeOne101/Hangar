@@ -20,6 +20,7 @@ public class CacheConfig {
     public static final String STAFF = "staff-cache";
     public static final String PLATFORMS_FULL = "platforms-full-cache";
     public static final String CATEGORIES = "categories-cache";
+    public static final String TAGS = "tags-cache";
     public static final String PERMISSIONS = "permissions-cache";
     public static final String CHANNEL_COLORS = "channelColors-cache";
     public static final String FLAG_REASONS = "flagReasons-cache";
@@ -68,6 +69,11 @@ public class CacheConfig {
     @Bean(CATEGORIES)
     Cache categoriesCache() {
         return this.createCache(CATEGORIES, Duration.ofHours(1), 1);
+    }
+
+    @Bean(TAGS)
+    Cache tagsCache() {
+        return this.createCache(TAGS, Duration.ofHours(1), 1);
     }
 
     @Bean(PERMISSIONS)

@@ -129,7 +129,7 @@ function createProject(project: ImportedProject) {
     project.settings.license.name = undefined as unknown as string;
   }
   if (project.util.licenseUnset) {
-    project.settings.license.url = undefined;
+    project.settings.license.url = undefined as unknown as string;
   }
   project.settings.links = stripUnfilledSuggestions(project.settings.links);
   useInternalApi<string>("projects/create", "post", project, { timeout: 10_000 })
@@ -280,15 +280,20 @@ useSeo(computed(() => ({ title: t("importer.title"), route })));
                   {{ t("project.new.step3.tags") }}
                   <hr />
                 </div>
-                <InputCheckbox v-for="tag in Object.values(Tag)" :key="tag" v-model="project.settings.tags" :value="tag">
-                  <template #label>
-                    <IconMdiPuzzleOutline v-if="tag === Tag.ADDON" />
-                    <IconMdiBookshelf v-else-if="tag === Tag.LIBRARY" />
-                    <IconMdiLeaf v-else-if="tag === Tag.SUPPORTS_FOLIA" />
-                    <span class="ml-1">{{ t("project.settings.tags." + tag + ".title") }}</span>
-                  </template>
-                </InputCheckbox>
+                <InputTagCheckbox 
+                  v-for="tag in useParentTags" 
+                  :key="tag.name"
+                  v-model="project.settings.tags"
+                  :value="tag.name" 
+                  :tag="tag">
 
+                  <template #label>
+                    <Tooltip>
+                      <template #content> {{ t("project.settings.tags." + tag + ".description") }} </template>
+                      <IconMdiHelpCircleOutline class="ml-1 text-gray-500 dark:text-gray-400 text-sm" />
+                    </Tooltip>
+                  </template>
+                </InputTagCheckbox>
                 <div class="text-lg mt-6 flex gap-2 items-center">
                   <IconMdiLicense />
                   {{ t("project.new.step3.license") }}

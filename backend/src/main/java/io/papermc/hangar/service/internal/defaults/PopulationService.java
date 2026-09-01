@@ -102,9 +102,9 @@ public class PopulationService extends HangarComponent {
         List<PlatformVersionTable> tables = new ArrayList<>();
         for (final var project : Objects.requireNonNull(fillResponse.getBody()).data().projects()) {
             switch (project.key) {
+                case "minecraft" -> project.versions.nodes.forEach(v -> tables.add(new PlatformVersionTable(Platform.MINECRAFT, v.key)));
                 case "paper" -> project.versions.nodes.forEach(v -> tables.add(new PlatformVersionTable(Platform.PAPER, v.key)));
-                case "waterfall" -> project.versions.nodes.forEach(v -> tables.add(new PlatformVersionTable(Platform.WATERFALL, v.key)));
-                case "velocity" -> project.versions.nodes.forEach(v -> tables.add(new PlatformVersionTable(Platform.VELOCITY, v.key)));
+                case "projectkorra" -> project.versions.nodes.forEach(v -> tables.add(new PlatformVersionTable(Platform.PROJECTKORRA, v.key)));
             }
         }
 

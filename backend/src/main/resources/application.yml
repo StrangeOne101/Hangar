@@ -89,6 +89,11 @@ hangar:
     - "AGPL"
     - "Other"
 
+  announcements:
+    - text: |
+        This is the experimental downloads page for ProjectKorra plugins and addons. Please report all bugs you find to ProjectKorra in our discord.
+      color: "#2f4476"
+
   update-tasks:
     homepage: 10m
     version-downloads: 10m
@@ -248,7 +253,7 @@ hangar:
     size: 256
 
   mail:
-    from: Hangar <noreply@mail.papermc.dev>
+    from: ProjectKorra <noreply@projectkorra.com>
     user: dum
     pass: dum
     host: localhost

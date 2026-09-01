@@ -14,16 +14,14 @@ import org.jdbi.v3.core.enums.EnumByOrdinal;
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @EnumByOrdinal
 public enum Category {
-    ADMIN_TOOLS(0, "mdi-server", "admin_tools"),
-    CHAT(1, "mdi-chat", "chat"),
-    DEV_TOOLS(2, "mdi-wrench", "dev_tools"),
-    ECONOMY(3, "mdi-cash-multiple", "economy"),
-    GAMEPLAY(4, "mdi-puzzle", "gameplay"),
-    GAMES(5, "mdi-controller-classic", "games"),
-    PROTECTION(6, "mdi-lock", "protection"),
-    ROLE_PLAYING(7, "mdi-auto-fix", "role_playing"),
-    WORLD_MANAGEMENT(8, "mdi-earth", "world_management"),
-    MISC(9, "mdi-asterisk", "misc"),
+    OFFICIAL_PLUGINS(0, "mdi-shield-crown", "official_plugins", true),
+    ABILITY(1, "mdi-paw", "ability"),
+    SIDE_PLUGIN(2, "mdi-puzzle", "side_plugin"),
+    DATA_PACK(3, "mdi-package-variant-closed", "data_pack"),
+    RESOURCE_PACK(4, "mdi-texture-box", "resource_pack"),
+    WORLD(5, "mdi-earth", "world"),
+    CONFIG(6, "mdi-cog", "config"),
+    OTHER(7, "mdi-help-box", "other"),
     UNDEFINED(10, "", "undefined", false);
 
     public static final List<Category> VALID_CATEGORIES = Arrays.stream(values()).filter(c -> c != UNDEFINED).toList();

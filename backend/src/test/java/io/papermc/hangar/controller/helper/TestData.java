@@ -38,9 +38,7 @@ import io.papermc.hangar.service.internal.projects.ProjectPageService;
 import io.papermc.hangar.service.internal.projects.ProjectService;
 import io.papermc.hangar.service.internal.users.UserService;
 import io.papermc.hangar.service.internal.versions.VersionFactory;
-import io.papermc.hangar.service.internal.versions.VersionService;
 import java.util.EnumMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -132,7 +130,7 @@ public class TestData {
         this.userDAO.update(USER_BANNED);
         this.userDAO.update(USER_PROJECT_OWNER);
 
-        this.globalRoleService.addRole(new GlobalRoleTable(USER_ADMIN.getUserId(), GlobalRole.HANGAR_ADMIN));
+        this.globalRoleService.addRole(new GlobalRoleTable(USER_ADMIN.getUserId(), GlobalRole.ADMIN));
 
         HangarApplication.TEST_PRINCIPAL = Optional.of(new HangarPrincipal(USER_ADMIN.getUserId(), USER_ADMIN.getName(), USER_ADMIN.getEmail(), false, Permission.All, null, 2, true));
 
@@ -142,16 +140,16 @@ public class TestData {
 
         logger.info("Creating some test projects...");
         PROJECT = this.projectFactory.createProject(new NewProjectForm(new ProjectSettings(List.of(), List.of(), new ProjectLicense(null, null, "MIT"), List.of(), null, false),
-            Category.CHAT, "", ORG.getUserId(), "TestProject", "# Test", null));
+            Category.ABILITY, "", ORG.getUserId(), "TestProject", "# Test", null));
         PAGE_PARENT = this.projectPageService.createPage(PROJECT.getProjectId(), "TestParentPage", "testparentpage", "# TestParentPage", true, null, false);
         PAGE_CHILD = this.projectPageService.createPage(PROJECT.getProjectId(), "TestChildPage", "testparentpage/testchild", "# TestChildPage", true, PAGE_PARENT.getId(), false);
 
         PRIVATE_PROJECT = this.projectFactory.createProject(new NewProjectForm(new ProjectSettings(List.of(), List.of(), new ProjectLicense(null, null, "MIT"), List.of(), null, false),
-            Category.CHAT, "", ORG.getUserId(), "PrivateProject", "# PrivateProject", null));
+            Category.ABILITY, "", ORG.getUserId(), "PrivateProject", "# PrivateProject", null));
 
         logger.info("Creating some test versions...");
-        VERSION = this.versionFactory.publishPendingVersion(PROJECT.getProjectId(), new PendingVersion("1.0", Map.of(), new EnumMap<>(Map.of(Platform.PAPER, new TreeSet<>(Set.of("1.8.8")))), "# 1.0", List.of(new PendingVersionFile(List.of(Platform.PAPER), null, "https://google.com")), "Release", "Release channel", null, Set.of()));
-        VERSION_HIDDEN = this.versionFactory.publishPendingVersion(PROJECT.getProjectId(), new PendingVersion("2.0", Map.of(), new EnumMap<>(Map.of(Platform.PAPER, new TreeSet<>(Set.of("1.8.8")))), "# 2.0", List.of(new PendingVersionFile(List.of(Platform.PAPER), null, "https://google.com")), "Release", "Release channel", null, Set.of()));
+        VERSION = this.versionFactory.publishPendingVersion(PROJECT.getProjectId(), new PendingVersion("1.0", Map.of(), new EnumMap<>(Map.of(Platform.MINECRAFT, new TreeSet<>(Set.of("1.8")))), "# 1.0", List.of(new PendingVersionFile(List.of(Platform.MINECRAFT), null, "https://google.com")), "Release", "Release channel", null, Set.of()));
+        VERSION_HIDDEN = this.versionFactory.publishPendingVersion(PROJECT.getProjectId(), new PendingVersion("2.0", Map.of(), new EnumMap<>(Map.of(Platform.MINECRAFT, new TreeSet<>(Set.of("1.8")))), "# 2.0", List.of(new PendingVersionFile(List.of(Platform.MINECRAFT), null, "https://google.com")), "Release", "Release channel", null, Set.of()));
         VERSION_HIDDEN.setVisibility(Visibility.NEEDSAPPROVAL);
         this.projectVersionsDAO.update(VERSION_HIDDEN);
 

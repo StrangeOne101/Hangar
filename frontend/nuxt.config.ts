@@ -162,7 +162,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     preset: "node_server",
-    compressPublicAssets: true,
+    compressPublicAssets: false,
     timing: false,
   },
   sourcemap: {

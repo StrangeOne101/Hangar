@@ -25,7 +25,7 @@ export default defineNuxtModule({
     configKey: "backendData",
   },
   defaults: {
-    serverUrl: "https://hangar.papermc.dev",
+    serverUrl: "https://0.0.0.0",
     path: "./shared/generated/backendData.json",
     ttl: 30 * 60 * 1000, // 30 min
     // bumped when the shape of the fetched data changes, forcing a refetch
@@ -48,7 +48,7 @@ export default defineNuxtModule({
   },
 });
 
-async function generateBackendData(state: ServerBackendData, path: string, retry = true) {
+async function generateBackendData(state: ServerBackendData, path: string, retry = false) {
   const axiosInstance = prepareAxios(state.meta.apiUrl);
 
   try {
@@ -74,7 +74,7 @@ async function generateBackendData(state: ServerBackendData, path: string, retry
     }
     if (retry) {
       backendDataLog("Try running against production...");
-      state.meta.apiUrl = "https://hangar.papermc.io";
+      state.meta.apiUrl = "https://projectkorra.com";
       await generateBackendData(state, path, false);
     } else {
       await fs.writeFile(path, JSON.stringify({}));
@@ -142,6 +142,7 @@ async function loadData(state: ServerBackendData, axiosInstance: AxiosInstance) 
     axiosInstance.get<FlagReasonData[]>("/flagReasons"),
     axiosInstance.get<string[]>("/loggedActions"),
     axiosInstance.get<Security>("/security"),
+    axiosInstance.get<TagData[]>("/tags"),
   ]);
   const [
     projectCategories,
@@ -157,6 +158,7 @@ async function loadData(state: ServerBackendData, axiosInstance: AxiosInstance) 
     flagReasons,
     loggedActions,
     security,
+    tags,
   ] = result.map((it) => it?.data || it);
 
   state.projectCategories = projectCategories as typeof state.projectCategories;
@@ -172,4 +174,5 @@ async function loadData(state: ServerBackendData, axiosInstance: AxiosInstance) 
   state.flagReasons = flagReasons as typeof state.flagReasons;
   state.loggedActions = loggedActions as typeof state.loggedActions;
   state.security = security as typeof state.security;
+  state.tags = tags as typeof state.tags;
 }
