@@ -6,6 +6,7 @@ import io.papermc.hangar.config.CacheConfig;
 import io.papermc.hangar.config.hangar.HangarConfig;
 import io.papermc.hangar.db.customtypes.RoleCategory;
 import io.papermc.hangar.db.dao.internal.table.roles.RolesDAO;
+import io.papermc.hangar.model.api.project.settings.Tag;
 import io.papermc.hangar.model.common.Color;
 import io.papermc.hangar.model.common.MemberPermissions;
 import io.papermc.hangar.model.common.NamedPermission;
