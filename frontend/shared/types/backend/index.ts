@@ -54,16 +54,15 @@ export enum FlagReason {
 }
 
 export enum Category {
-  AdminTools = "admin_tools",
-  Chat = "chat",
-  DevTools = "dev_tools",
-  Economy = "economy",
-  Gameplay = "gameplay",
-  Games = "games",
-  Protection = "protection",
-  RolePlaying = "role_playing",
-  WorldManagement = "world_management",
-  Misc = "misc",
+  Ability = "ability",
+  AbilityPack = "ability_pack",
+  OfficialPlugins = "official_plugins",
+  SidePlugin = "side_plugin",
+  DataPack = "data_pack",
+  ResourcePack = "resource_pack",
+  WorldBuild = "world_build",
+  ConfigFile = "config_file",
+  Other = "other",
   Undefined = "undefined",
 }
 
@@ -92,8 +91,8 @@ export enum Category {
  */
 export enum Platform {
   PAPER = "PAPER",
-  WATERFALL = "WATERFALL",
-  VELOCITY = "VELOCITY",
+  PROJECTKORRA = "PROJECTKORRA",
+  MINECRAFT = "MINECRAFT",
 }
 
 export enum PermissionType {
@@ -174,6 +173,37 @@ export enum Tag {
   ADDON = "ADDON",
   LIBRARY = "LIBRARY",
   SUPPORTS_FOLIA = "SUPPORTS_FOLIA",
+  CUSTOM_ABILITY = "CUSTOM_ABILITY",
+  ABILITY_PACK = "ABILITY_PACK",
+  PASSIVE_ABILITY = "PASSIVE_ABILITY",
+  COMBO_ABILITY = "COMBO_ABILITY",
+  MULTI_ABILITY = "MULTI_ABILITY",
+  CUSTOM_ELEMENT = "CUSTOM_ELEMENT",
+  GUI = "GUI",
+  ELEMENT_AVATAR = "ELEMENT_AVATAR",
+  ELEMENT_DARK_AVATAR = "ELEMENT_DARK_AVATAR",
+  ELEMENT_FIRE = "ELEMENT_FIRE",
+  ELEMENT_COMBUSTION = "ELEMENT_COMBUSTION",
+  ELEMENT_LIGHTNING = "ELEMENT_LIGHTNING",
+  ELEMENT_WATER = "ELEMENT_WATER",
+  ELEMENT_ICE = "ELEMENT_ICE",
+  ELEMENT_BLOOD= "ELEMENT_BLOOD",
+  ELEMENT_PLANT = "ELEMENT_PLANT",
+  ELEMENT_HEALING = "ELEMENT_HEALING",
+  ELEMENT_EARTH = "ELEMENT_EARTH",
+  ELEMENT_SAND = "ELEMENT_SAND",
+  ELEMENT_METAL = "ELEMENT_METAL",
+  ELEMENT_LAVA = "ELEMENT_LAVA",
+  ELEMENT_AIR = "ELEMENT_AIR",
+  ELEMENT_FLIGHT = "ELEMENT_FLIGHT",
+  ELEMENT_SPIRITUAL = "ELEMENT_SPIRITUAL",
+  ELEMENT_CHI = "ELEMENT_CHI",
+  ELEMENT_SPIRIT = "ELEMENT_SPIRIT",
+  ELEMENT_LIGHT_SPIRIT = "ELEMENT_LIGHT_SPIRIT",
+  ELEMENT_DARK_SPIRIT = "ELEMENT_DARK_SPIRIT",
+  MOBS = "MOBS",
+  WORLD = "WORLD",
+  MISC = "MISC",
 }
 
 export enum InviteStatus {

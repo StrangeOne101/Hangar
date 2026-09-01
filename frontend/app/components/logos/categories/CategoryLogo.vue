@@ -18,7 +18,7 @@ withDefaults(
   <icon-mdi-file-document-multiple v-else-if="category === Category.AbilityPack" v-bind="$attrs" :width="size" :height="size" />
   <icon-mdi-package-variant-closed v-else-if="category === Category.DataPack" v-bind="$attrs" :width="size" :height="size" />
   <icon-mdi-texture-box v-else-if="category === Category.ResourcePack" v-bind="$attrs" :width="size" :height="size" />
-  <icon-mdi-earth v-else-if="category === Category.World" v-bind="$attrs" :width="size" :height="size" />
-  <icon-mdi-cog v-else-if="category === Category.Config" v-bind="$attrs" :width="size" :height="size" />
+  <icon-mdi-earth v-else-if="category === Category.WorldBuild" v-bind="$attrs" :width="size" :height="size" />
+  <icon-mdi-cog v-else-if="category === Category.ConfigFile" v-bind="$attrs" :width="size" :height="size" />
   <icon-mdi-help-box v-else-if="category === Category.Other" v-bind="$attrs" :width="size" :height="size" />
 </template>

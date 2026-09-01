@@ -177,15 +177,15 @@ useSeo(
             Find your favorite
             <div class="h-[36px] overflow-hidden relative">
               <span class="flex flex-col absolute w-full anim">
-                <strong class="highlight bg-gradient-to-r from-primary-500 to-primary-400 text-transparent">Paper plugins</strong>
-                <strong class="highlight bg-gradient-to-r from-primary-500 to-primary-400 text-transparent">Velocity plugins</strong>
-                <strong class="highlight bg-gradient-to-r from-primary-500 to-primary-400 text-transparent">Waterfall plugins</strong>
+                <strong class="highlight bg-gradient-to-r from-primary-500 to-primary-400 text-transparent">Side Plugin</strong>
+                <strong class="highlight bg-gradient-to-r from-primary-500 to-primary-400 text-transparent">Ability Pack</strong>
+                <strong class="highlight bg-gradient-to-r from-primary-500 to-primary-400 text-transparent">Resource Pack</strong>
               </span>
             </div>
           </template>
         </h1>
         <div class="text-1xl text-center mb-2">
-          Hangar allows you to find and download the best Paper plugins, Velocity plugins or Waterfall plugins for your Minecraft server
+          Hangar allows you to find and download the best Side Plugins, Ability Packs or Resource Packs for your Minecraft server
         </div>
       </template>
       <template v-else>
@@ -202,13 +202,13 @@ useSeo(
             <PlatformLogo :platform="Platform.PAPER" :size="20" class="flex-shrink-0" />
             Paper plugins
           </Button>
-          <Button v-if="platform != Platform.VELOCITY" variant="outline" tone="neutral" to="/velocity">
-            <PlatformLogo :platform="Platform.VELOCITY" :size="20" class="flex-shrink-0" />
+          <Button v-if="platform != Platform.MINECRAFT" variant="outline" tone="neutral" to="/velocity">
+            <PlatformLogo :platform="Platform.MINECRAFT" :size="20" class="flex-shrink-0" />
             Velocity plugins
           </Button>
-          <Button v-if="platform != Platform.WATERFALL" variant="outline" tone="neutral" to="/waterfall">
-            <PlatformLogo :platform="Platform.WATERFALL" :size="20" class="flex-shrink-0" />
-            Waterfall plugins
+          <Button v-if="platform != Platform.PROJECTKORRA" variant="outline" tone="neutral" to="/projectkorra">
+            <PlatformLogo :platform="Platform.PROJECTKORRA" :size="20" class="flex-shrink-0" />
+            ProjectKorra Abilities
           </Button>
         </div>
       </div>
@@ -369,6 +369,37 @@ useSeo(
                 <IconMdiPuzzleOutline v-if="tag === Tag.ADDON" class="flex-shrink-0" />
                 <IconMdiBookshelf v-else-if="tag === Tag.LIBRARY" class="flex-shrink-0" />
                 <IconMdiLeaf v-else-if="tag === Tag.SUPPORTS_FOLIA" class="flex-shrink-0" />
+                <icon-mdi-puzzle-outline v-if="tag === Tag.CUSTOM_ABILITY" class="flex-shrink-0" />
+                <icon-mdi-file-document-multiple v-else-if="tag === Tag.ABILITY_PACK" class="flex-shrink-0" />
+                <IconMdiAllInclusiveBox v-else-if="tag === Tag.PASSIVE_ABILITY" class="flex-shrink-0" />
+                <IconMdiNumeric v-else-if="tag === Tag.COMBO_ABILITY" class="flex-shrink-0" />
+                <IconMdiNumeric9BoxMultiple v-else-if="tag === Tag.MULTI_ABILITY" class="flex-shrink-0" />
+                <IconMdiNewBox v-else-if="tag === Tag.CUSTOM_ELEMENT" class="flex-shrink-0" />
+                <IconMdiMonitor v-else-if="tag === Tag.GUI" class="flex-shrink-0" />
+                <IconMdiDecagram v-else-if="tag === Tag.ELEMENT_AVATAR" class="flex-shrink-0" />
+                <IconMdiDecagramOutline v-else-if="tag === Tag.ELEMENT_DARK_AVATAR" class="flex-shrink-0" />
+                <IconMdiFire v-else-if="tag === Tag.ELEMENT_FIRE" class="flex-shrink-0" />
+                <IconMdiFlare v-else-if="tag === Tag.ELEMENT_COMBUSTION" class="flex-shrink-0" />
+                <IconMdiFlash v-else-if="tag === Tag.ELEMENT_LIGHTNING" class="flex-shrink-0" />
+                <IconMdiWater v-else-if="tag === Tag.ELEMENT_WATER" class="flex-shrink-0" />
+                <IconMdiSnowflake v-else-if="tag === Tag.ELEMENT_ICE" class="flex-shrink-0" />
+                <IconMdiWaterOpacity v-else-if="tag === Tag.ELEMENT_BLOOD" class="flex-shrink-0" />
+                <IconMdiLeaf v-else-if="tag === Tag.ELEMENT_PLANT" class="flex-shrink-0" />
+                <IconMdiHospital v-else-if="tag === Tag.ELEMENT_HEALING" class="flex-shrink-0" />
+                <IconMdiEarth v-else-if="tag === Tag.ELEMENT_EARTH" class="flex-shrink-0" />
+                <IconMdiBeach v-else-if="tag === Tag.ELEMENT_SAND" class="flex-shrink-0" />
+                <IconMdiNut v-else-if="tag === Tag.ELEMENT_METAL" class="flex-shrink-0" />
+                <IconMdiFireCircle v-else-if="tag === Tag.ELEMENT_LAVA" class="flex-shrink-0" />
+                <IconMdiWeatherWindy v-else-if="tag === Tag.ELEMENT_AIR" class="flex-shrink-0" />
+                <IconMdiAirplane v-else-if="tag === Tag.ELEMENT_FLIGHT" class="flex-shrink-0" />
+                <IconMdiMeditation v-else-if="tag === Tag.ELEMENT_SPIRITUAL" class="flex-shrink-0" />
+                <IconMdiKarate v-else-if="tag === Tag.ELEMENT_CHI" class="flex-shrink-0" />
+                <IconMdiGhost v-else-if="tag === Tag.ELEMENT_SPIRIT" class="flex-shrink-0" />
+                <IconMdiRabbit v-else-if="tag === Tag.ELEMENT_LIGHT_SPIRIT" class="flex-shrink-0" />
+                <IconMdiSpider v-else-if="tag === Tag.ELEMENT_DARK_SPIRIT" class="flex-shrink-0" />
+                <IconMdiPaw v-else-if="tag === Tag.MOBS" class="flex-shrink-0" />
+                <IconMdiEarthBox v-else-if="tag === Tag.WORLD" class="flex-shrink-0" />
+                <IconMdiPuzzle v-else-if="tag === Tag.MISC" class="flex-shrink-0" />
               </FilterOption>
             </div>
           </Card>
