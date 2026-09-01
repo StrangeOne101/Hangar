@@ -16,7 +16,7 @@ const { projectOwners } = usePossibleOwners();
 const projectCreationErrors = ref<string[]>([]);
 const projectLoading = ref(true);
 const form = ref<NewProjectForm>({
-  category: Category.AdminTools,
+  category: Category.Ability,
   settings: {
     license: {} as ProjectSettingsForm["settings"]["license"],
     donation: {} as ProjectSettingsForm["settings"]["donation"],

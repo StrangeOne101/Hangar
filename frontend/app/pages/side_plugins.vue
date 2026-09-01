@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Homepage from "~/components/Homepage.vue";
-import { Category } from "~/types/backend";
+import { Category } from "#shared/types/backend";
 
 //const settingsStore = useSettingsStore();
 

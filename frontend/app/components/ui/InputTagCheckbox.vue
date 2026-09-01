@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T">
 
-import type { TagData} from "~/types/backend";
-import { Tag } from "~/types/backend";
+import type { TagData } from "#shared/types/backend";
+import { Tag } from "#shared/types/backend";
 
 const i18n = useI18n();
 
@@ -48,8 +48,8 @@ const { v } = useValidation(props.label, undefined, internalVal);
     />
     <icon-mdi-check-bold class="absolute h-4 w-4 opacity-0 text-white" />
     <slot name="label">
-      <IconMdiPuzzleOutline v-if="tag.name === Tag.CUSTOM_ABILITY" />
-      <IconMdiFileDocumentMultiple v-else-if="tag.name === Tag.ABILITY_PACK" />
+      <icon-mdi-puzzle-outline v-if="tag.name === Tag.CUSTOM_ABILITY" />
+      <icon-mdi-file-document-multiple v-else-if="tag.name === Tag.ABILITY_PACK" />
       <IconMdiAllInclusiveBox v-else-if="tag.name === Tag.PASSIVE_ABILITY" />
       <IconMdiNumeric v-else-if="tag.name === Tag.COMBO_ABILITY" />
       <IconMdiNumeric9BoxMultiple v-else-if="tag.name === Tag.MULTI_ABILITY" />

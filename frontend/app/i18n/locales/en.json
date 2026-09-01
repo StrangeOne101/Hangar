@@ -210,8 +210,8 @@
       "ability_pack": "Ability Pack",
       "data_pack": "Data Pack",
       "resource_pack": "Resource Pack",
-      "world": "World/Build",
-      "config": "Config File",
+      "world_build": "World/Build",
+      "config_file": "Config File",
       "other": "Other",
       "undefined": "ERROR"
     },
