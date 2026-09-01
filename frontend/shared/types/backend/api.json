@@ -6048,7 +6048,7 @@
       "io.papermc.hangar.model.common.Platform": {
         "type": "string",
         "description": "Server platform",
-        "enum": ["PAPER", "WATERFALL", "VELOCITY"],
+        "enum": ["PAPER", "PROJECTKOKRRA", "MINECRAFT"],
         "example": "PAPER"
       },
       "io.papermc.hangar.model.common.Platform.Category": { "type": "string", "enum": ["Server", "Proxy"] },

@@ -13879,7 +13879,7 @@
           "platforms": {
             "type": "array",
             "description": "List of platforms this jar runs on",
-            "example": "[PAPER, WATERFALL, VELOCITY]",
+            "example": "[PAPER, PROJECTKORRA, MINECRAFT]",
             "items": {
               "$ref": "#/components/schemas/Platform"
             }

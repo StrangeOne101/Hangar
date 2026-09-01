@@ -117,7 +117,7 @@ const palette = computed(() => (settingsStore.darkMode ? SERIES.dark : SERIES.li
 const axisInk = computed(() => (settingsStore.darkMode ? "#9ca3af" : "#6b7280"));
 const gridInk = computed(() => (settingsStore.darkMode ? "rgba(148, 163, 184, 0.16)" : "rgba(100, 116, 139, 0.16)"));
 
-const PLATFORM_ORDER = [Platform.PAPER, Platform.WATERFALL, Platform.VELOCITY];
+const PLATFORM_ORDER = [Platform.PAPER, Platform.PROJECTKORRA, Platform.MINECRAFT];
 
 const platformSplit = computed(() => {
   const rows = adminStatsSummary.value?.platformDownloads || [];

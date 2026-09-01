@@ -14,7 +14,7 @@ export function useSeo(
   const config = useRuntimeConfig();
   const i18n = useNuxtApp().$i18n;
 
-  const description = computed(() => input.value.description || "Plugin repository for Paper, Velocity, Waterfall and Folia.");
+  const description = computed(() => input.value.description || "Plugin repository for Paper, Minecraft, ProjectKorra and Folia.");
   const canonical = computed(
     () =>
       config.public.host +

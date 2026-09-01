@@ -51,8 +51,8 @@ async function setExcluded(projectId: number, exclude: boolean) {
 
 const fullVersions = ref<Record<Platform, string[]>>({
   PAPER: [],
-  WATERFALL: [],
-  VELOCITY: [],
+  PROJECTKORRA: [],
+  MINECRAFT: [],
 });
 resetPlatformVersions();
 
