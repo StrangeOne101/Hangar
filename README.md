@@ -3,7 +3,7 @@
 [![Discord](https://img.shields.io/discord/855123416889163777?)](https://discord.gg/zvrAEbvJ4a)
 ![GitHub License](https://img.shields.io/github/license/hangarmc/hangar)
 [![Swagger Validator](https://img.shields.io/swagger/valid/3.0?specUrl=https%3A%2F%2Fhangar.papermc.io%2Fv3%2Fapi-docs%2Fpublic)](https://hangar.papermc.io/api-docs)
-[![BrowserStack Status](https://automate.browserstack.com/badge.svg?badge_key=OHFacEE0WmlHRldDajYrZFdsZUtDOFZBcmUyR1VWdWlUaStlQWJYS0xZVT0tLWRKODJVblZQblczRXMvejNQTGhEZ1E9PQ==--54e7c90dad3680579c945ff532d63909156aa024)](https://automate.browserstack.com/public-build/OHFacEE0WmlHRldDajYrZFdsZUtDOFZBcmUyR1VWdWlUaStlQWJYS0xZVT0tLWRKODJVblZQblczRXMvejNQTGhEZ1E9PQ==--54e7c90dad3680579c945ff532d63909156aa024)
+<!--[![BrowserStack Status](https://automate.browserstack.com/badge.svg?badge_key=OHFacEE0WmlHRldDajYrZFdsZUtDOFZBcmUyR1VWdWlUaStlQWJYS0xZVT0tLWRKODJVblZQblczRXMvejNQTGhEZ1E9PQ==--54e7c90dad3680579c945ff532d63909156aa024)](https://automate.browserstack.com/public-build/OHFacEE0WmlHRldDajYrZFdsZUtDOFZBcmUyR1VWdWlUaStlQWJYS0xZVT0tLWRKODJVblZQblczRXMvejNQTGhEZ1E9PQ==--54e7c90dad3680579c945ff532d63909156aa024)-->
 
 This is the repository for Hangar, a plugin repository used for Paper, Velocity, and Waterfall plugins and similar software.
 
@@ -21,15 +21,20 @@ The project consists of 3 main parts
 * Backend (Spring Boot)
 * Database (PostgreSQL)
 
+Additionally, we use the following services:
+* Search Engine (MeiliSearch)
+* Storage (rustfs locally, b2 bucket in production)
+* Email (mailslurper locally, MailGun in production)
+
 ## Development Setup
 
 Fork the project and pull it in your IDE.
 
 ### Prerequisites
 
-* Docker is required in order to run the PostgreSQL database and the dummy email server
-* Java 21 or higher
-* [pnpm](https://pnpm.io/installation)
+* Docker is required in order to run the PostgreSQL database, the MeiliSearch engine and the dummy email server
+* Java 25 or higher
+* [pnpm](https://pnpm.io/installation) and [node](https://nodejs.org) (v22 or higher)
 * mvn
 * git
 * we strongly recommend using IntelliJ IDEA (Ultimate) as your IDE
@@ -51,7 +56,7 @@ To get the project running locally, you need to follow a few steps:
 
 #### Frontend and Backend
 
-1. Get the dummy database, storage and email server up and running.  
+1. Get the dummy database, storage, search engine and email server up and running.  
    **Using Intellij**: Run the `docker` run config (or click the green arrow in the gutter on this line)  
    **Manually**: Move to the docker folder `cd docker` then run `docker-compose -f dev.yml up -d` (`-d` as an optional parameter to run the containers in the background).
 2. Start the backend.  
@@ -71,7 +76,7 @@ To get the project running locally, you need to follow a few steps:
 
 * The Spring Boot configuration file that is used by this environment is located at `backend/src/main/resources/application.yml`.
 * You can view the emails hangar sends on http://localhost:4436/
-* On staging/prod Hangar uses object storage, if you want to test that you can install minio and change the storage type to `object` in the `application.yml`
+* On staging/prod Hangar uses object storage, if you want to test that you can install rustfs (provided in the docker dev.yml) and change the storage type to `object` in the `application.yml`
 
 ## Deployment
 

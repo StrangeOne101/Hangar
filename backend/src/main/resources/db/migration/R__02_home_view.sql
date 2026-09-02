@@ -1,9 +1,12 @@
-CREATE OR REPLACE VIEW projects_extra AS
+DROP VIEW IF EXISTS projects_extra CASCADE;
+
+CREATE VIEW projects_extra AS
     SELECT p.*,
            array_agg(DISTINCT pm.user_id)           AS project_members,
            max(lv.created_at)                       AS last_updated,
            coalesce(ps.stars::bigint, 0::bigint)    AS stars,
-           coalesce(pw.watchers::bigint, 0::bigint) AS watchers
+           coalesce(pw.watchers::bigint, 0::bigint) AS watchers,
+           min(lv.created_at)                       AS published_at
     FROM projects p
         JOIN project_members_all pm ON p.id = pm.id
         LEFT JOIN project_versions lv ON p.id = lv.project_id
@@ -23,13 +26,6 @@ CREATE OR REPLACE VIEW projects_extra AS
 DROP MATERIALIZED VIEW IF EXISTS home_projects CASCADE;
 
 CREATE MATERIALIZED VIEW home_projects AS
-    WITH platform_versions_agg AS (SELECT pv.project_id,
-                                          v.platform,
-                                          array_agg(v.version) AS versions
-                                   FROM platform_versions v
-                                       JOIN project_version_platform_dependencies pvpd ON v.id = pvpd.platform_version_id
-                                       JOIN project_versions pv ON pvpd.version_id = pv.id
-                                   GROUP BY pv.project_id, v.platform)
     SELECT p.*,
            array_agg(DISTINCT pm.user_id)                                             AS project_members,
            array_agg(DISTINCT lower(u.name))                                          AS project_member_names,
@@ -40,6 +36,7 @@ CREATE MATERIALIZED VIEW home_projects AS
            coalesce(ps.stars::bigint, 0::bigint)                                      AS stars,
            coalesce(pw.watchers::bigint, 0::bigint)                                   AS watchers,
            coalesce(max(lv.created_at), p.created_at)                                 AS last_updated,
+           min(lv.created_at)                                                         AS published_at,
         /* avatar stuff */
            (SELECT '/project/' || p.id || '.webp?v=' || a.version
             FROM avatars a
@@ -50,9 +47,14 @@ CREATE MATERIALIZED VIEW home_projects AS
             WHERE o.id = p.owner_id AND a.type = 'user' AND a.subject = o.uuid::text) AS avatar_fallback,
         /* store the supported platforms and versions */
         /* format: [{"platform": 0, "versions": ["1.19.4"]}, {"platform": 1, "versions": ["1.18"]}, {"platform": 2, "versions": ["3.2"]}] */
-           (SELECT jsonb_agg(jsonb_build_object('platform', pva.platform, 'versions', pva.versions))
-            FROM platform_versions_agg pva
-            WHERE pva.project_id = p.id)                                              AS supported_platforms,
+           (SELECT jsonb_agg(jsonb_build_object('platform', platform, 'versions', versions)) AS platforms
+            FROM (SELECT platformelement ->> 'platform'            AS platform,
+                         json_agg(DISTINCT platformversionelement) AS versions
+                  FROM project_versions pv,
+                       LATERAL jsonb_array_elements(pv.platforms) AS platformelement,
+                       LATERAL jsonb_array_elements(platformelement -> 'versions') AS platformversionelement
+                  WHERE pv.project_id = p.id
+                  GROUP BY platformelement ->> 'platform') sub)                                              AS supported_platforms,
         /* search stuff
             we want to search in the name, description, keywords and owner_name, in that priority
             for name and owner name we search the original name and a snake_case version so tsvector can find submatches
@@ -120,3 +122,60 @@ CREATE MATERIALIZED VIEW home_projects AS
     GROUP BY p.id, ps.stars, pw.watchers, pva.views, pda.downloads, pvr.recent_views, pdr.recent_downloads;
 
 CREATE UNIQUE INDEX home_projects_id_idx ON home_projects (id);
+
+
+-- home_projects drop above cascades to pinned_projects so they always need to run together
+DROP VIEW IF EXISTS pinned_projects CASCADE;
+
+CREATE VIEW pinned_projects AS
+    SELECT DISTINCT ON (user_id, project_id) project_id,
+                                    user_id,
+                                    id,
+                                    owner_name AS owner,
+                                    project_members,
+                                    project_member_names,
+                                    slug,
+                                    visibility,
+                                    views,
+                                    downloads,
+                                    recent_views,
+                                    recent_downloads,
+                                    stars,
+                                    watchers,
+                                    category,
+                                    name,
+                                    created_at,
+                                    license_type,
+                                    description,
+                                    unlisted,
+                                    last_updated,
+                                    published_at,
+                                    avatar,
+                                    avatar_fallback
+    FROM (SELECT pp.id,
+                 pp.user_id,
+                 pp.project_id,
+                 p.owner_name,
+                 hp.project_members,
+                 hp.project_member_names,
+                 p.slug,
+                 p.visibility,
+                 hp.views,
+                 hp.downloads,
+                 hp.recent_views,
+                 hp.recent_downloads,
+                 hp.stars,
+                 hp.watchers,
+                 p.category,
+                 p.name,
+                 p.created_at,
+                 p.license_type,
+                 p.description,
+                 p.unlisted,
+                 hp.last_updated,
+                 hp.published_at,
+                 hp.avatar,
+                 hp.avatar_fallback
+          FROM pinned_user_projects pp
+              JOIN home_projects hp ON hp.id = pp.project_id
+              JOIN projects p ON pp.project_id = p.id) AS pvs;

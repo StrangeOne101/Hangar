@@ -1,0 +1,1865 @@
+{
+  "meta": {
+    "code": "en",
+    "iso": "en-US",
+    "name": "English",
+    "icon": "US"
+  },
+  "general": {
+    "by": "by",
+    "cancel": "Cancel",
+    "close": "Close",
+    "submit": "Submit",
+    "save": "Save",
+    "comment": "Comment",
+    "change": "Change",
+    "donate": "Donate",
+    "continue": "Continue",
+    "create": "Create",
+    "delete": "Delete",
+    "or": "Or",
+    "reset": "Reset",
+    "edit": "Edit",
+    "required": "Required",
+    "optional": "Optional",
+    "add": "Add",
+    "name": "Name",
+    "link": "Link",
+    "send": "Send",
+    "home": "Home",
+    "message": "Message",
+    "refresh": "Refresh",
+    "searching": "Searching...",
+    "confirm": "Confirm",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "tomorrow": "Tomorrow",
+    "used": "Used",
+    "reveal": "Reveal",
+    "unsavedChanges": "You have unsaved changes",
+    "saving": "Saving...",
+    "saved": "Saved",
+    "discard": "Discard",
+    "error": {
+      "invalidUrl": "Invalid URL format (did you forget the https://?)",
+      "nameEmpty": "Name cannot be empty",
+      "fieldEmpty": "This field is required to be set"
+    },
+    "file": {
+      "choose": "Choose a file",
+      "dropHint": "Click to browse, or drop a file here",
+      "clear": "Remove file"
+    },
+    "retry": "Retry",
+    "select": "Select..."
+  },
+  "hangar": {
+    "footer": {
+      "api": "Hangar API",
+      "changelog": "What's new",
+      "org": "GitHub",
+      "terms": "Terms and Conditions",
+      "privacypolicy": "Privacy Policy",
+      "guidelines": "Resource Guidelines",
+      "legalNotice": "Legal Notice",
+      "status": "Status"
+    },
+    "projectSearch": {
+      "clear": "(clear)",
+      "filters": "Filters",
+      "clearPlatform": "Clear platform filter",
+      "searchVersions": "Search versions...",
+      "searchCategories": "Search categories...",
+      "noFilterResults": "No matching filters.",
+      "query": "Search in {0} projects...",
+      "sortBy": "Sort by",
+      "noProjects": "There are no projects. 😢",
+      "noProjectsFound": "Found 0 projects. 😢",
+      "categories": "Categories",
+      "licenses": "Licenses",
+      "versions": {
+        "MINECRAFT": "Minecraft/Spigot Versions",
+        "PROJECTKORRA": "ProjectKorra Versions",
+        "PAPER": "Paper Supported Resources",
+        "ASSET": "Asset Files Only"
+      },
+      "platforms": "Platform Versions",
+      "tags": "Tags"
+    },
+    "discover": {
+      "title": "Discover",
+      "sub": "A new mix every day",
+      "prev": "Scroll left",
+      "next": "Scroll right"
+    },
+    "subtitle": "A Minecraft package repository",
+    "sponsoredBy": "Sponsored by"
+  },
+  "pages": {
+    "guidelinesTitle": "Resource Guidelines",
+    "privacypolicyTitle": "Privacy Policy",
+    "termsTitle": "Terms and Conditions",
+    "staffTitle": "Staff",
+    "authorsTitle": "Authors",
+    "headers": {
+      "username": "Username",
+      "roles": "Roles",
+      "joined": "Joined",
+      "projects": "Projects",
+      "locked": "Locked?",
+      "organization": "Org?"
+    },
+    "noAuthors": "No authors found.",
+    "noStaff": "No staff found.",
+    "userCount": "Users | User | Users"
+  },
+  "nav": {
+    "indexTitle": "Home",
+    "authorsTitle": "Authors",
+    "officialPlugins": "Official Plugins",
+    "sidePlugins": "Side Plugins",
+    "abilities": "Abilities",
+    "search": "Search",
+    "staffTitle": "Staff",
+    "login": "Log in",
+    "signup": "Sign up",
+    "user": {
+      "profile": "Profile",
+      "notifications": "Notifications",
+      "changelog": "What's new",
+      "flags": "Reports",
+      "settings": "Settings",
+      "apiKeys": "API keys",
+      "projectApprovals": "Project approvals",
+      "versionApprovals": "Version approvals",
+      "stats": "Stats",
+      "health": "Hangar Health",
+      "log": "User Action Log",
+      "adminSettings": "Admin settings",
+      "userList": "User List",
+      "logout": "Sign out",
+      "error": {
+        "loginFailed": "Authentication failed",
+        "invalidUsername": "Invalid username",
+        "usernameTaken": "The given username is unavailable",
+        "emailTaken": "The given email is unavailable",
+        "hangarAuth": "Couldn't connect to HangarAuth",
+        "loginDisabled": "Login is temporarily unavailable, please try again later"
+      }
+    },
+    "createNew": "New",
+    "menu": "Menu",
+    "darkModeOn": "Turn on Dark Mode",
+    "darkModeOff": "Turn off Dark Mode",
+    "new": {
+      "title": "Create",
+      "project": "New Project",
+      "organization": "New Organization"
+    },
+    "tools": {
+      "title": "Tools",
+      "bbcode": "BBCode Converter",
+      "markdown": "Markdown Editor",
+      "importer": "Project Importer",
+      "version": "Hangar Version Info"
+    },
+    "hangar": {
+      "tools": "Hangar Tools",
+      "moreFrom": "Socials",
+      "home": "Homepage",
+      "code": "GitHub",
+      "discord": "Discord",
+      "docs": "Wiki",
+      "javadocs": "JavaDocs",
+      "downloads": "Downloads",
+      "community": "Community"
+    },
+    "links": {
+      "createProject": "Create Project",
+      "createOrganization": "Create Organization"
+    },
+    "usersTitle": "Users"
+  },
+  "guidelines": {
+    "title": "Resource Guidelines"
+  },
+  "project": {
+    "stargazers": "Stargazers",
+    "noStargazers": "There are no stargazers on this project yet 😢",
+    "watchers": "Watchers",
+    "noWatchers": "There are no watchers on this project yet 😢",
+    "members": "Members",
+    "noPublicMembers": "There are no public members.",
+    "bannersInfo": "Did you know? You can show off your project with awesome community provided banners and badges! Check out the Banners tab in",
+    "bannersInfoSettings": "your project settings!",
+    "sorting": {
+      "mostStars": "Most Stars",
+      "mostDownloads": "Most Downloads",
+      "mostViews": "Most Views",
+      "newest": "Newest",
+      "recentlyUpdated": "Recently Updated",
+      "recentViews": "Recent Views",
+      "recentDownloads": "Recent Downloads",
+      "slug": "Name"
+    },
+    "category": {
+      "info": "Category",
+      "official_plugins": "Official Plugins",
+      "ability": "Bending Ability",
+      "side_plugin": "Side Plugin",
+      "ability_pack": "Ability Pack",
+      "data_pack": "Data Pack",
+      "resource_pack": "Resource Pack",
+      "world_build": "World/Build",
+      "config_file": "Config File",
+      "other": "Other",
+      "undefined": "ERROR"
+    },
+    "actions": {
+      "unwatch": "Unwatch",
+      "watch": "Watch",
+      "watchLoggedOut": "Log in to watch this resource",
+      "watched": "You are now watching the resource",
+      "unwatched": "You are no longer watching the resource",
+      "flag": "Report",
+      "openReport": "You still have an unresolved report on this resource",
+      "star": "Star",
+      "starLoggedOut": "Log in to star this resource",
+      "unstar": "Unstar",
+      "starred": "You starred the resource",
+      "unstarred": "You unstarred the resource",
+      "adminActions": "Admin Actions",
+      "flagHistory": "Report history ({0})",
+      "staffNotes": "Staff notes ({0})",
+      "userActionLogs": "User Action Logs",
+      "forum": "Forum"
+    },
+    "flag": {
+      "flagProject": "Report {0}?",
+      "flagSend": "Your report has been submitted",
+      "flagSent": "Report submitted for review",
+      "flags": {
+        "inappropriateContent": "Inappropriate Content",
+        "impersonation": "Impersonation or Deception",
+        "spam": "Spam",
+        "malIntent": "Malicious Intent",
+        "other": "Other"
+      },
+      "error": {
+        "alreadyOpen": "You can only have 1 unresolved report on a project",
+        "alreadyResolved": "This report is already resolved",
+        "commentTooLong": "Report comment is too long"
+      }
+    },
+    "tabs": {
+      "docs": "Overview",
+      "versions": "Versions",
+      "discuss": "Discuss",
+      "channels": "Channels",
+      "settings": "Settings",
+      "homepage": "Homepage",
+      "issues": "Issues",
+      "source": "Source",
+      "support": "Support",
+      "wiki": "Wiki"
+    },
+    "new": {
+      "step1": {
+        "title": "User Agreement",
+        "text1": "A project contains information, downloads and documentation for your resource.",
+        "text2": "Before continuing, please review the ProjectKorra Submission Guideline.",
+        "importer_text": "Want to import projects from other platforms? Check out the importer!",
+        "continue": "Agree",
+        "back": "Abort"
+      },
+      "step2": {
+        "title": "Basic Settings",
+        "description": "Provide the basic settings for this project.",
+        "continue": "Continue",
+        "back": "Back",
+        "userSelect": "Create as...",
+        "projectName": "Project name",
+        "projectSummary": "Project Summary",
+        "projectCategory": "Project Category"
+      },
+      "step3": {
+        "title": "Additional Settings",
+        "description": "Optional: You can provide these additional settings, or change them in your project settings at any time after the project creation.",
+        "description2": "Selecting misleading tags or keywords can lead to your project being delisted.",
+        "continue": "Continue",
+        "back": "Back",
+        "optional": "Optional",
+        "links": "Links",
+        "tags": "Tags",
+        "homepage": "Homepage",
+        "issues": "Issue Tracker",
+        "source": "Source Code",
+        "support": "External Support",
+        "wiki": "External Wiki",
+        "license": "License",
+        "type": "Type",
+        "customName": "Name",
+        "url": "URL",
+        "keywords": "Keywords"
+      },
+      "step4": {
+        "title": "Finishing",
+        "text": "Creating...",
+        "creating": "Creating your project..."
+      },
+      "error": {
+        "create": "There was an error creating the project",
+        "nameExists": "A project with this name already exists",
+        "slugExists": "A project with this slug already exists",
+        "invalidName": "This name contains invalid characters",
+        "tooLongName": "Project name is too long",
+        "tooShortName": "This name is too short",
+        "tooLongDesc": "Project description is too long",
+        "tooLongLicense": "License name is too long",
+        "invalidLicense": "License name is invalid",
+        "tooLongSponsors": "Project sponsor box is too long",
+        "tooManyKeywords": "Project has too many keywords",
+        "keywordTooLong": "Project has a keyword that is too long",
+        "noCategory": "Project must have a category",
+        "noDescription": "Project must have a description",
+        "tooManyDependencies": "Too many dependencies"
+      }
+    },
+    "sendForApproval": "Send for approval",
+    "info": {
+      "title": "Information",
+      "publishDate": "Published",
+      "license": "License",
+      "views": "Views | View | Views",
+      "totalDownloads": "Downloads | Download | Downloads",
+      "totalTotalDownloads": "Total Downloads | Total Download | Total Downloads",
+      "stars": "Stars | Star | Stars",
+      "watchers": "Watchers | Watcher | Watchers",
+      "lastUpdatedTooltip": "Last updated "
+    },
+    "pinnedVersions": "Pinned Versions",
+    "sponsors": "Sponsors",
+    "sponsorsTooltip": "This field is meant for donators and software license sponsors. It is only shown to users if filled.",
+    "sponsorsEmpty": "No sponsors yet. Add some to thank the people funding this project.",
+    "license": {
+      "link": "Licensed under "
+    },
+    "error": {
+      "star": "Could not toggle starred",
+      "watch": "Could not toggle watched"
+    },
+    "settings": {
+      "title": "Settings",
+      "category": "Category",
+      "categorySub": "Categorize your project into one of 10 categories. Appropriately categorizing your project makes it easier for people to find.",
+      "keywords": "Keywords",
+      "keywordsSub": "These are special words that will return your project when people add them to their searches.",
+      "keywordTooLong": "Keyword '{0}' is too long",
+      "keywordTooShort": "Keyword '{0}' is too short",
+      "keywordInvalid": "Keyword '{0}' is invalid",
+      "tags": {
+        "title": "Tags",
+        
+        "CUSTOM_ABILITY": {
+          "title": "Custom Ability",
+          "description": "This project is a single custom bending ability that can be installed into the `/ProjectKorra/Abilities/` folder.",
+          "tooltip": "This project is a custom ability"
+        },
+        "ABILITY_PACK": {
+          "title": "Ability Pack",
+          "description": "This project includes a pack of multiple bending abilities. These can be across multiple elements and are installed into the `/plugins/` folder.",
+          "tooltip": "This project has multiple abilities"
+        },
+        "PASSIVE_ABILITY": {
+          "title": "Passive Ability",
+          "description": "This project features a passive ability that is always active.",
+          "tooltip": "This project has a passive ability"
+        },
+        "COMBO_ABILITY": {
+          "title": "Combo Ability",
+          "description": "This project includes a combo ability that requires a combination of moves.",
+          "tooltip": "This project has a combo ability"
+        },
+        "MULTI_ABILITY": {
+          "title": "Multi Ability",
+          "description": "This project features a multi ability that can perform different actions over multiple slots, such as WaterArms.",
+          "tooltip": "This project has a multi ability"
+        },
+        "CUSTOM_ELEMENT": {
+          "title": "Custom Element",
+          "description": "This project introduces a custom element that is not part of the standard elements.",
+          "tooltip": "This project features a custom element"
+        },
+        "GUI": {
+          "title": "Graphical User Interface",
+          "description": "This project includes a graphical user interface for easier interaction. This can be a chest menu, scoreboard, or other GUI.",
+          "tooltip": "This project features a GUI"
+        },
+        "ELEMENT_AVATAR": {
+          "title": "Avatar Element",
+          "description": "This project includes abilities related to the Avatar element.",
+          "tooltip": "This project contains an Avatar ability"
+        },
+        "ELEMENT_DARK_AVATAR": {
+          "title": "Dark Avatar Element",
+          "description": "This project includes abilities or features related to Dark Avatars",
+          "tooltip": "This project contains features for Dark Avatars"
+        },
+        "ELEMENT_FIRE": {
+          "title": "Fire Element",
+          "description": "This project includes abilities related to the Fire element.",
+          "tooltip": "This project contains a firebending ability"
+        },
+        "ELEMENT_COMBUSTION": {
+          "title": "Combustion",
+          "description": "This project includes abilities related to the Combustion subelement.",
+          "tooltip": "This project contains a combustion ability"
+        },
+        "ELEMENT_LIGHTNING": {
+          "title": "Lightning",
+          "description": "This project includes abilities related to the Lightning subelement.",
+          "tooltip": "This project contains a lightning ability"
+        },
+        "ELEMENT_WATER": {
+          "title": "Water Element",
+          "description": "This project includes abilities related to the Water element.",
+          "tooltip": "This project contains a waterbending ability"
+        },
+        "ELEMENT_ICE": {
+          "title": "Ice",
+          "description": "This project includes abilities related to the Ice subelement.",
+          "tooltip": "This project contains an icebending ability"
+        },
+        "ELEMENT_BLOOD": {
+          "title": "Blood",
+          "description": "This project includes abilities related to the Blood subelement.",
+          "tooltip": "This project contains a bloodbending ability"
+        },
+        "ELEMENT_PLANT": {
+          "title": "Plant",
+          "description": "This project includes abilities related to the Plant subelement.",
+          "tooltip": "This project contains a plantbending ability"
+        },
+        "ELEMENT_HEALING": {
+          "title": "Healing",
+          "description": "This project includes abilities related to the Healing subelement.",
+          "tooltip": "This project contains a healing ability"
+        },
+        "ELEMENT_EARTH": {
+          "title": "Earth Element",
+          "description": "This project includes abilities related to the Earth element.",
+          "tooltip": "This project contains an earthbending ability"
+        },
+        "ELEMENT_METAL": {
+          "title": "Metal",
+          "description": "This project includes abilities related to the Metal subelement.",
+          "tooltip": "This project contains a metalbending ability"
+        },
+        "ELEMENT_LAVA": {
+          "title": "Lava",
+          "description": "This project includes abilities related to the Lava subelement.",
+          "tooltip": "This project contains a lavabending ability"
+        },
+        "ELEMENT_SAND": {
+          "title": "Sand",
+          "description": "This project includes abilities related to the Sand subelement.",
+          "tooltip": "This project contains a sandbending ability"
+        },
+        "ELEMENT_AIR": {
+          "title": "Air Element",
+          "description": "This project includes abilities related to the Air element.",
+          "tooltip": "This project contains an airbending ability"
+        },
+        "ELEMENT_FLIGHT": {
+          "title": "Flight",
+          "description": "This project includes abilities related to the Flight subelement.",
+          "tooltip": "This project contains a flight ability"
+        },
+        "ELEMENT_SPIRITUAL": {
+          "title": "Spiritual Projection ",
+          "description": "This project includes abilities related to the Spiritual Projection element.",
+          "tooltip": "This project contains a spiritual projection ability"
+        },
+        "ELEMENT_CHI": {
+          "title": "Chi Element",
+          "description": "This project includes abilities related to the Chi element.",
+          "tooltip": "This project contains a chiblocking ability"
+        },
+        "ELEMENT_SPIRIT": {
+          "title": "Spirit Element",
+          "description": "This project includes abilities related to the Spirit custom element.",
+          "tooltip": "This project contains a spirits ability"
+        },
+        "ELEMENT_LIGHT_SPIRIT": {
+          "title": "Light Spirit Element",
+          "description": "This project includes abilities related to the Light Spirit custom element.",
+          "tooltip": "This project contains a light spirit ability"
+        },
+        "ELEMENT_DARK_SPIRIT": {
+          "title": "Dark Spirit Element",
+          "description": "This project includes abilities related to the Dark Spirit custom element.",
+          "tooltip": "This project contains a dark spirit ability"
+        },
+        "MOBS": {
+          "title": "Mobs",
+          "description": "This project interacts with mobs/creatures in some way",
+          "tooltip": "This project uses mobs somehow"
+        },
+        "WORLD": {
+          "title": "World",
+          "description": "This project interacts with the world in some way. Whether this be a custom world, or a world edit schematic, or even an ability that affects the world.",
+          "tooltip": "This project has something to do with the world"
+        },
+        "LIBRARY": {
+          "title": "Library",
+          "description": "This project is a library meant to be used by other projects.",
+          "tooltip": "This project is a library"
+        },
+        "MISC": {
+          "title": "Miscellaneous",
+          "description": "This project features things that don't quite fit into the other tags.",
+          "tooltip": "This project is miscellaneous"
+        }
+      },
+      "tagsSub": "Tags are used to further categorize your project for users.",
+      "invalidTag": "Invalid tag",
+      "links": {
+        "title": "Links",
+        "sub": "Link out to your homepage, issue tracker, wiki or anywhere else.",
+        "titleField": "Section title",
+        "topTitle": "Header links",
+        "topSub": "Shown next to the project tabs at the top of the page.",
+        "sidebarTitle": "Sidebar sections",
+        "sidebarSub": "Each section becomes its own card in the project sidebar.",
+        "addSection": "Add section",
+        "removeSection": "Remove section",
+        "addLink": "Add link",
+        "nameField": "Name",
+        "urlField": "URL"
+      },
+      "license": "License",
+      "licenseSub": "What can people do (and not do) with your project?",
+      "forum": "Create posts on the forums",
+      "forumSub": "Sets if events like a new release should automatically create a post on the forums",
+      "description": "Description",
+      "descriptionSub": "A short description of your project",
+      "icon": "Icon",
+      "iconSub": "Upload an image representative of your project.",
+      "iconUpload": "Upload",
+      "iconReset": "Reset Icon",
+      "rename": "Rename",
+      "renameSub": "Changing your project's name can have undesired consequences. We will not setup any redirects.",
+      "unlisted": "Unlisted",
+      "unlistedSub": "An unlisted project stays reachable by its link, but is left out of search, the homepage and profiles. Members can still see it listed.",
+      "unlistedLabel": "Hide this project from listings",
+      "unlistedNotice": "This project is unlisted. It stays reachable by link, but is left out of search, the homepage and profiles.",
+      "transfer": "Transfer",
+      "transferSub": "Transferring your project name can have undesired consequences. We will not setup any redirects.",
+      "transferTo": "User or organization",
+      "newName": "New Name",
+      "delete": "Delete",
+      "deleteSub": "Once you delete a project, it cannot be recovered.",
+      "hardDelete": "Hard Delete",
+      "hardDeleteSub": "Once you delete a project, it cannot be recovered. For real this time...",
+      "save": "Save changes",
+      "optional": "(optional)",
+      "licenseCustom": "Custom Name",
+      "licenseUrl": "URL",
+      "donation": {
+        "enable": "Enable",
+        "enableSub": "Enable the donation form for this project",
+        "subject": "PayPal email or hosted button id",
+        "subjectSub": "Enter your PayPal email here. Alternatively, you can setup a hosted button on PayPals Website and enter the hosted button id here.",
+        "subjectLabel": "PayPal email or button id"
+      },
+      "banners": {
+        "markdown": "Copy markdown",
+        "url": "Copy url",
+        "style": "Style",
+        "author": "Author",
+        "resource": "Resource",
+        "downloads": "Downloads",
+        "stars": "Stars",
+        "views": "Views",
+        "copied": "Copied to clipboard!",
+        "mcbanners": "MCBanners",
+        "mcbannersSub": "MCBanners is a service provides banners for authors or resources you can embed anywhere. Find out more at mcbanners.com",
+        "shields": "shields.io",
+        "shieldsSub": "shields.io is a service that provides small badges for resources. Find out more at shields.io"
+      },
+      "error": {
+        "invalidFile": "{0} is an invalid file type",
+        "noFile": "No file submitted",
+        "members": {
+          "invalidUser": "{0} is not a valid user",
+          "alreadyInvited": "{0} is already invited to the project",
+          "notMember": "{0} is not a member of the project, therefore you cannot edit their role",
+          "pendingTransfer": "You already have a pending transfer",
+          "missingTitle": "Give {0} a title",
+          "cannotRemoveOwner": "{0} owns this project and cannot be removed",
+          "cannotInviteOrganization": "{0} is an organization and cannot be a member. Invite its members instead, or transfer the project to it.",
+          "ownerCannotLeave": "You own this project and cannot leave it. Transfer ownership first."
+        }
+      },
+      "success": {
+        "changedIcon": "Successfully changed the project icon",
+        "changedIconWarn": "Successfully changed the project icon, however the cache couldn't be cleared, it might not be updated instantly: {0}",
+        "resetIcon": "Successfully reset the project icon",
+        "resetIconWarn": "Successfully reset the project icon, however the cache couldn't be cleared, it might not be updated instantly: {0}",
+        "savedGeneral": "General settings saved",
+        "savedLinks": "Links saved",
+        "rename": "Successfully renamed the project to {0}",
+        "transferRequest": "Sent a transfer request to {0}. You can cancel this via the member list.",
+        "softDelete": "You have deleted this project",
+        "hardDelete": "You have fully deleted this project"
+      },
+      "tabs": {
+        "general": "General",
+        "links": "Links",
+        "management": "Management",
+        "donation": "Donations",
+        "banners": "Banners",
+        "members": "Members",
+        "channels": "Channels"
+      },
+      "dangerZone": "Danger zone",
+      "membersSub": "Members can manage this project according to the role you give them.",
+      "channelsSub": "Release channels represent the state of a plugin release. A project may have up to five release channels.",
+      "changeIcon": "Change icon"
+    },
+    "discuss": {
+      "login": "Log in",
+      "toReply": "to reply to this discussion",
+      "noTopic": "There is no discussion for this project",
+      "send": "Reply posted!"
+    },
+    "pin": {
+      "pin": "Pin",
+      "pinned": "Pinned",
+      "pinTooltip": "Pin {0} to the top of your profile",
+      "unpinTooltip": "Remove {0} from the pinned section of your profile"
+    }
+  },
+  "page": {
+    "plural": "Pages",
+    "overview": "Overview",
+    "new": {
+      "title": "Create a new page",
+      "error": {
+        "minLength": "Page contents are too short",
+        "maxLength": "Page contents are too long",
+        "maxSlugLength": "Page slug is too long",
+        "duplicateName": "A page with that name already exists",
+        "invalidName": "Invalid name",
+        "name": {
+          "maxLength": "Page name too long",
+          "minLength": "Page name too short",
+          "invalidChars": "Page name contained invalid characters"
+        },
+        "save": "Unable to save page"
+      },
+      "name": "Page Name",
+      "parent": "Parent Page (optional)",
+      "parentNone": "None"
+    },
+    "delete": {
+      "title": "Delete page?",
+      "text": "Are you sure you want to delete this page? This cannot be undone."
+    }
+  },
+  "version": {
+    "new": {
+      "title": "Create version...",
+      "upload": "Upload File",
+      "uploadNew": "Upload a new Version",
+      "url": "Enter a URL",
+      "form": {
+        "file": "Upload a file",
+        "url": "Provide a URL",
+        "versionString": "Version",
+        "fileName": "File name",
+        "fileSize": "File size",
+        "externalUrl": "External URL",
+        "hangarProject": "Project",
+        "linkOrProject": "Link or project",
+        "channel": "Channel",
+        "addChannel": "Create channel",
+        "unstable": "Unstable",
+        "forumPost": "Forum Post",
+        "release": {
+          "bulletin": "Release Bulletin",
+          "desc": "What's new in this release?"
+        },
+        "platforms": "Platforms",
+        "platformVersions": "Platform Versions",
+        "platformVersionsDescription": "Please select at least one version per platform that your resource is compatible with. You can still change platform versions and dependencies after the initial version creation.",
+        "versionDescription": "Enter the name of the version and double check that the uploaded artifacts are correct.",
+        "tags": "Version Tags",
+        "dependencies": "Dependencies",
+        "changelogTitle": "What's new?",
+        "artifactTitle": "After setting the channel, you can either upload a file or set an external download url. Each file/url needs at least one platform selected.",
+        "artifactNumber": "Download #{0}",
+        "externalLinkAlert": "An external link needs to be a direct download link!",
+        "downloads": "Downloads",
+        "addedArtifacts": "Provided Artifacts",
+        "addAnotherArtifact": "Add another file or URL"
+      },
+      "steps": {
+        "1": {
+          "header": "Artifact",
+          "back": "Cancel",
+          "continue": "Next"
+        },
+        "2": {
+          "header": "Artifact Data",
+          "back": "Back",
+          "continue": "Next"
+        },
+        "3": {
+          "header": "Dependencies",
+          "back": "Back",
+          "continue": "Next"
+        },
+        "4": {
+          "header": "Changelog",
+          "back": "Back",
+          "continue": "Create"
+        }
+      },
+      "error": {
+        "metaNotFound": "Could not load metadata from uploaded file",
+        "jarNotFound": "Could not open jar file",
+        "fileExtension": "Incorrect file extension",
+        "unexpected": "An unexpected error occurred",
+        "invalidVersionString": "Invalid version string found",
+        "duplicateNameAndPlatform": "A version with this name and compatible platform already exists",
+        "invalidNumOfPlatforms": "Invalid number of platforms",
+        "duplicate": "A version with this file already exists",
+        "noFile": "Could not find uploaded file",
+        "mismatchedFileSize": "File sizes do not match",
+        "hashMismatch": "File hashes do not match",
+        "invalidPlatformVersion": "Invalid MC version for a platform specified",
+        "invalidPlatformVersionList": "Invalid MC version for a platform specified. Provided: {0}",
+        "fileIOError": "File IO Error",
+        "unknown": "An unknown error has occurred",
+        "incomplete": "Plugin file missing {0}",
+        "noDescription": "Must have a description",
+        "invalidPluginDependencyNamespace": "Plugin dependency {0} does not exist on this website",
+        "invalidName": "Invalid version name",
+        "channel": {
+          "noName": "Must have a channel name specified",
+          "noColor": "Must have a channel color specified"
+        }
+      },
+      "gradle-plugin-info": "Did you know? You can upload a new version to Hangar right from your IDE/CI using the"
+    },
+    "deps": {
+      "title": "Dependencies: {0}",
+      "sub": "Plugins and libraries a server needs for this version to run.",
+      "empty": "No dependencies",
+      "emptyHint": "Add anything a server has to install alongside this version.",
+      "add": "Add dependency",
+      "kind": "Dependency source",
+      "hangar": "Hangar",
+      "url": "URL",
+      "openProject": "Open project",
+      "noProjects": "No projects found",
+      "openLink": "Open link",
+      "makeOptional": "Mark as optional",
+      "makeRequired": "Mark as required",
+      "duplicate": "Another dependency already uses this name.",
+      "duplicateHint": "Each dependency needs its own name."
+    },
+    "platformSelect": {
+      "title": "Platform versions: {0}",
+      "sub": "Pick every {0} version this release runs on.",
+      "filter": "Filter",
+      "clear": "Clear",
+      "none": "No versions selected",
+      "noMatches": "No versions match “{0}”"
+    },
+    "edit": {
+      "platformVersions": "Edit Platform Versions: {0}",
+      "pluginDeps": "Edit Plugin Dependencies: {0}",
+      "error": {
+        "noPlatformVersions": "Must supply at least one valid platform version",
+        "invalidVersionForPlatform": "{0} is an invalid version for {1}",
+        "invalidProjectNamespace": "{0} is not a valid project namespace"
+      }
+    },
+    "page": {
+      "subheader": "{0} released {2} version {3} on {1}",
+      "author": "Author",
+      "dependencies": "Dependencies",
+      "noDependencies": "No dependencies",
+      "platforms": "Platforms",
+      "required": "(required)",
+      "reviewLogs": "Review logs",
+      "reviewStart": "Review",
+      "scans": "Scans",
+      "manage": "Management",
+      "visibility": "Visibility: {0}",
+      "pinned": {
+        "tooltip": {
+          "none": "Pin this version to the main project page",
+          "version": "Remove this pinned version from the main project page",
+          "channel": "This version is pinned via its channel"
+        },
+        "button": {
+          "none": "Pin",
+          "version": "Unpin",
+          "channel": "Unpin"
+        },
+        "request": {
+          "true": "Successfully pinned this version",
+          "false": "Successfully unpinned this version"
+        }
+      },
+      "delete": "Delete",
+      "hardDelete": "Delete (forever)",
+      "restore": "Restore",
+      "download": "Download",
+      "downloadExternal": "Download External",
+      "shortVersions": "{0} and {1} more",
+      "adminActions": "Admin actions",
+      "partiallyApproved": "Partially approved",
+      "approved": "Approved",
+      "userAdminLogs": "User Logs",
+      "unsafeWarning": "This version has not been reviewed by our staff and may not be safe to download",
+      "unsafeWarningExternal": "External downloads are not under our control and may not be safe to use",
+      "downloadUrlCopied": "Copied!",
+      "downloadUrlHover": "Click to copy download URL",
+      "noVersions": "There are no versions yet!",
+      "channel": "Channel",
+      "version": "Version",
+      "published": "Published",
+      "downloads": "Downloads",
+      "confirmation": {
+        "title": "Warning - {0} {1} by {2}",
+        "alert": "This version has not been reviewed by our moderation staff yet and may not be safe to use.",
+        "disclaimer": "Disclaimer: We disclaim all responsibility for any harm to your server or system should you choose not to heed this warning.",
+        "agree": "Download it at my own risk",
+        "deny": "Go back"
+      }
+    },
+    "channels": "Channels",
+    "editChannels": "Edit Channels",
+    "platforms": "Platforms",
+    "error": {
+      "onlyOnePublic": "You only have 1 public version left",
+      "oldNameTaken": "Cannot automatically remove the deletion suffix - rename the version manually before restoring"
+    },
+    "success": {
+      "softDelete": "You have deleted this version",
+      "hardDelete": "You have fully deleted this version",
+      "restore": "You have restored this version"
+    }
+  },
+  "channel": {
+    "modal": {
+      "titleNew": "Add a new release channel",
+      "titleEdit": "Edit release channel",
+      "name": "Release Channel Name",
+      "description": "Release Channel Description",
+      "color": "Release Channel Color",
+      "pickedColor": "Picked channel color (must be unique)",
+      "flags": {
+        "unstable": "Versions are to be considered unstable",
+        "pinned": "Latest version is pinned on main project page",
+        "sends_notifications": "New versions in this channel send notifications to watching users",
+        "hide_by_default": "De-select this channel on the versions page"
+      },
+      "error": {
+        "invalidName": "Invalid channel name",
+        "maxChannels": "This project already has the maximum number of channels: {0}",
+        "duplicateColor": "This project already has a channel with this color",
+        "duplicateName": "This project already has a channel with this name",
+        "tooLongName": "Channel name is too long",
+        "tooLongDescription": "Channel description is too long",
+        "cannotDelete": "You cannot delete this channel",
+        "cannotEdit": "You cannot edit this channel",
+        "invalidFlag": "You tried to set an invalid channel flag"
+      },
+      "success": {
+        "addedChannel": "Successfully added a new release channel: {0}",
+        "editedChannel": "Successfully Edited release channel: {0}",
+        "deletedChannel": "Successfully deleted release channel: {0}"
+      }
+    },
+    "manage": {
+      "title": "Release channels",
+      "reviewInfo": "Channel names may automatically be flagged for review and will only be published after",
+      "subtitle": "Release channels represent the state of a plugin release. A project may have up to five release channels.",
+      "channelName": "Channel Name",
+      "channelDescription": "Channel Description",
+      "versionCount": "Version Count",
+      "reviewed": "Reviewed",
+      "edit": "Edit",
+      "trash": "Trash",
+      "editButton": "Edit",
+      "deleteButton": "Delete",
+      "add": "Add Channel",
+      "empty": "No release channels yet.",
+      "frozen": "This channel is frozen and cannot be edited away or deleted."
+    }
+  },
+  "organization": {
+    "new": {
+      "title": "Create a new Organization",
+      "text": "Organizations allow you to group users and provide closer collaboration between them within your projects on ProjectKorra.",
+      "name": "Organization Name",
+      "error": {
+        "duplicateName": "An organization/user with that name already exists",
+        "invalidName": "Invalid organization name",
+        "tooManyOrgs": "You can only create a maximum of {0} organizations",
+        "notEnabled": "Organizations are not enabled!",
+        "jsonError": "Error parsing the JSON response from HangarAuth",
+        "hangarAuthValidationError": "Validation Error: {0}",
+        "unknownError": "Unknown error while creating organization",
+        "noSpaces": "The organization name cannot contain any spaces"
+      },
+      "create": "Create organization",
+      "nameHint": "Between {0} and {1} characters. Letters, numbers, underscores and dashes only.",
+      "slotsUsed": "{0} of {1} organizations used"
+    },
+    "settings": {
+      "title": "Organization settings",
+      "changeAvatar": "Change avatar",
+      "icon": "Icon",
+      "iconSub": "Upload an image representing this organization.",
+      "tagline": "Tagline",
+      "taglineSub": "A short line of text shown under the organization name.",
+      "socials": "Social links",
+      "socialsSub": "Links shown on the organization's profile.",
+      "membersSub": "Manage who belongs to this organization and what they can do.",
+      "transfer": "Transfer ownership",
+      "transferSub": "Send an invitation for another user to take over as owner.",
+      "delete": "Delete organization",
+      "tabs": {
+        "general": "General",
+        "members": "Members",
+        "management": "Management"
+      },
+      "members": {
+        "invalidUser": "{0} is not a valid user",
+        "alreadyInvited": "{0} is already invited to the organization",
+        "notMember": "{0} is not a member of the organization, therefore you cannot edit their role",
+        "pendingTransfer": "You already have a pending transfer",
+        "missingTitle": "Give {0} a title",
+        "cannotRemoveOwner": "{0} owns this organization and cannot be removed",
+        "cannotInviteOrganization": "{0} is an organization and cannot be a member. Invite its members instead.",
+        "ownerCannotLeave": "You own this organization and cannot leave it. Transfer ownership first."
+      },
+      "transferModal": {
+        "title": "Transfer {0} to another user",
+        "description": "After you click the transfer button, the selected user will receive an invitation to join {0} as the new owner. If they accept, you will be demoted to the secondary owner rank.",
+        "transferTo": "User"
+      },
+      "deleteModal": {
+        "title": "Delete {0}",
+        "description": "This will delete all projects of the organization and permanently delete the org. Are you sure you want to do that?"
+      },
+      "success": {
+        "transferRequest": "Successfully sent a transfer request to {0}. You can cancel this via the member list.",
+        "saved": "Saved",
+        "deleted": "Deleted {0}"
+      }
+    }
+  },
+  "form": {
+    "memberList": {
+      "info": "Give each member a title of your choosing and tick exactly what they may do. Titles are free text and only shown to others; permissions are what actually grants access.",
+      "addUser": "Add User...",
+      "create": "Create",
+      "editUser": "Edit User",
+      "invitedAs": "Pending invite as {0}",
+      "leave": "Leave",
+      "remove": "Remove",
+      "cancelTransfer": "Revoke transfer request",
+      "leaveModal": {
+        "title": "Leave {0}",
+        "description": "Are you sure you want to leave {0}? After you leave, you can only rejoin after receiving a new invitation."
+      },
+      "pending": "Pending",
+      "invite": "Invite",
+      "cancelInvite": "Cancel invite",
+      "title": "Title",
+      "titleHint": "Shown next to the member, for example \"Maintainer\" or \"Docs\".",
+      "ownerLocked": "Owners always hold every permission. Transfer ownership to change that.",
+      "noMembers": "No members",
+      "noUsers": "No users found"
+    }
+  },
+  "changelog": {
+    "title": "What's new",
+    "description": "Recent changes to Hangar.",
+    "feed": "Atom feed",
+    "seenDivider": "You've seen everything below",
+    "kind": {
+      "feature": "Feature",
+      "improvement": "Improved",
+      "fix": "Fixed",
+      "api": "API"
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "subtitle": "Project updates, review results, replies, and invites.",
+    "recentNotifications": "Recent notifications",
+    "invites": "Invites",
+    "invitesPending": "Pending invites: {0}",
+    "invited": "You have been invited to join the {0}",
+    "inviteAccepted": "You have accepted an invitation to the {0}",
+    "invitedOrg": "Your organization {0} has been invited to join the {1}",
+    "inviteAcceptedOrg": "You have accepted an invitation for {0} to the {1}",
+    "readAll": "Mark as read",
+    "unread": "Unread",
+    "read": "Read",
+    "all": "All",
+    "viewAll": "View all",
+    "viewMoreUnread": "View {0} more unread notifications",
+    "markAsRead": "Mark as read",
+    "invite": {
+      "all": "All",
+      "projects": "Projects",
+      "organizations": "Organizations",
+      "invitedYouAs": "invited you as",
+      "invitedOrganizationAs": "invited {0} as",
+      "types": {
+        "project": "Project invite",
+        "organization": "Organization invite"
+      },
+      "btns": {
+        "accept": "Accept",
+        "decline": "Decline",
+        "unaccept": "Unaccept"
+      },
+      "msgs": {
+        "accept": "You have joined {0}",
+        "decline": "You have declined to join {0}",
+        "unaccept": "You have left {0}"
+      }
+    },
+    "empty": {
+      "unread": "You have no unread notifications.",
+      "recent": "You have no recent notifications!",
+      "read": "You have no read notifications.",
+      "all": "You have no notifications.",
+      "invites": "You have no pending invites."
+    },
+    "emptyState": {
+      "unread": {
+        "title": "No unread notifications",
+        "description": "You're caught up... for now."
+      },
+      "all": {
+        "title": "No notifications yet",
+        "description": "Updates will show up here."
+      },
+      "invites": {
+        "title": "No pending invites",
+        "description": "No project or organization invites right now."
+      }
+    },
+    "project": {
+      "visibilityChanged": "The visibility of {0} has been changed to {1}",
+      "visibilityChangedComment": "The visibility of {0} has been changed to {1}. Reason: {2}",
+      "manualReportComment": "You received a comment regarding a report on {0}: {1}",
+      "reviewed": "{0} {1} has been reviewed and is approved",
+      "reviewedPartial": "{0} {1} has been reviewed and is partially approved",
+      "newVersion": "A new version has been released for {0}: {1}",
+      "invite": "You have been invited to join the group {0} on the project {1}",
+      "inviteOrg": "Your organization {0} has been invited to join the group {1} on the project {2}",
+      "inviteRescinded": "Your invite to join the group {0} in the project {1} has been rescinded",
+      "inviteRescindedOrg": "Your organizations {0} invite to join the group {1} in the project {2} has been rescinded",
+      "removed": "You have been removed from the group {0} in the project {1}",
+      "removedOrg": "Your organization {0} has been removed from the group {1} in the project {2}",
+      "roleChanged": "You have been added to the {0} group in the project {1}",
+      "roleChangedOrg": "Your organization {0} has been added to the {0} group in the project {1}",
+      "transfer": "{0} would like to transfer the project {1} to you",
+      "transferOrg": "{0} would like to transfer the project {1} to your organization {2}"
+    },
+    "organization": {
+      "invite": "You have been invited to join the group {0} in the organization {1}",
+      "inviteRescinded": "Your invite to join the group {0} in the organization {1} has been rescinded",
+      "removed": "You have been removed from the group {0} in the organization {1}",
+      "roleChanged": "You have been added to the {0} group in the organization {1}",
+      "transfer": "{0} would like to transfer the organization {1} to you"
+    }
+  },
+  "visibility": {
+    "notice": {
+      "new": "This project will not be shown to others until a version has been uploaded.",
+      "needsChanges": "This project requires changes:",
+      "needsApproval": "You have sent the project for review",
+      "softDelete": "Project deleted by {0}"
+    },
+    "name": {
+      "new": "New",
+      "public": "Public",
+      "needsChanges": "Needs Changes",
+      "needsApproval": "Needs Approval",
+      "softDelete": "Soft Delete"
+    },
+    "changes": {
+      "version": {
+        "reviewed": "due to approved reviews"
+      }
+    },
+    "modal": {
+      "activatorBtn": "Visibility Actions",
+      "title": "Change {0}'s visibility",
+      "reason": "Reason for change",
+      "success": "You changed the {0}'s visibility to {1}"
+    }
+  },
+  "author": {
+    "watching": "Watching",
+    "stars": "Stars",
+    "orgs": "Organizations",
+    "management": "Management",
+    "viewOnForums": "View on forums ",
+    "taglineLabel": "User Tagline",
+    "editTagline": "Edit Tagline",
+    "editSocials": "Edit Socials",
+    "editOrgVisibility": "Edit Organization Visibility",
+    "orgVisibilityModal": "Toggle an organization to hide your membership publicly.",
+    "memberSince": "Member since {0}",
+    "memberSinceLabel": "Member since",
+    "numProjects": "No projects | {0} project | {0} projects",
+    "numProjectsLabel": "Projects",
+    "addTagline": "Add a tagline",
+    "addSocials": "Add links",
+    "revealSharedAddress": "Reveal shared addresses",
+    "noOrgs": "{0} is not part of any organizations.",
+    "noWatching": "{0} is not watching any projects.",
+    "noStarred": "{0} has not starred any projects.",
+    "tooltips": {
+      "settings": "User Settings",
+      "lock": "Lock Account",
+      "unlock": "Unlock Account",
+      "apiKeys": "API Keys",
+      "activity": "User Activity",
+      "admin": "User Admin",
+      "transfer": "Transfer organization to another user",
+      "delete": "Delete organization",
+      "deleteUser": "Delete user",
+      "lockOrg": "Lock organization",
+      "unlockOrg": "Unlock organization"
+    },
+    "lock": {
+      "confirmLock": "Lock {0}'s account?",
+      "confirmUnlock": "Unlock {0}'s account?",
+      "successLock": "Successfully locked {0}'s account",
+      "successUnlock": "Successfully unlocked {0}'s account",
+      "confirmLockOrg": "Lock the {0} organization?",
+      "confirmUnlockOrg": "Unlock the {0} organization?",
+      "successLockOrg": "Successfully locked the {0} organization",
+      "successUnlockOrg": "Successfully unlocked the {0} organization",
+      "deleteProjects": "Delete ALL projects of user",
+      "reinstateProjects": "Reinstate ALL deleted projects of user",
+      "deleteProjectsOrg": "Delete ALL projects of the organization",
+      "reinstateProjectsOrg": "Reinstate ALL deleted projects of the organization",
+      "reasonLock": "Reason for locking",
+      "reasonUnlock": "Reason for unlocking"
+    },
+    "org": {
+      "editAvatar": "Edit avatar"
+    },
+    "error": {
+      "invalidTagline": "Invalid tagline",
+      "invalidUsername": "Invalid username"
+    },
+    "pinnedPlugins": "Pinned plugins",
+    "sharesAddress": "Shares address with",
+    "noSharedAddress": "No other accounts share an address with {0}.",
+    "nameHistory": "Previous names",
+    "organizationLabel": "Organization",
+    "createdLabel": "Created",
+    "createdOn": "Created {0}"
+  },
+  "linkout": {
+    "title": "External Link Warning",
+    "text": "You have clicked on an external link to \"{0}\". If you did not intend to visit this link, please go back. Otherwise, click continue. If you trust this domain, you will not be asked again.",
+    "abort": "Go Back",
+    "continue": "Continue once",
+    "trust": "Trust and continue"
+  },
+  "flags": {
+    "header": "Reports submitted by users about this project.",
+    "allReports": "All reports",
+    "noFlags": "No reports found",
+    "resolved": "Yes, by {0} on {1}",
+    "notResolved": "No"
+  },
+  "notes": {
+    "header": "Notes for",
+    "title": "Staff notes",
+    "subtitle": "Internal notes about this project, visible only to staff.",
+    "noNotes": "No notes found",
+    "addNote": "Add note",
+    "notes": "Notes",
+    "placeholder": "Add a note..."
+  },
+  "stats": {
+    "title": "Stats",
+    "from": "From",
+    "to": "To",
+    "allTime": "All time",
+    "period": "Selected period",
+    "needsAttention": "Needs attention",
+    "allClear": "Nothing waiting — the queues are empty",
+    "noData": "No activity in this range",
+    "vsPrevious": "vs. previous {days}",
+    "dayCount": "{count} day | {count} days",
+    "range": {
+      "week": "7 days",
+      "month": "30 days",
+      "quarter": "90 days",
+      "year": "12 months",
+      "custom": "Custom"
+    },
+    "users": "Users",
+    "projects": "Projects",
+    "versions": "Versions",
+    "downloads": "Downloads",
+    "views": "Page views",
+    "uploads": "New versions",
+    "newProjects": "New projects",
+    "newUsers": "New users",
+    "reviews": "Reviews",
+    "openedFlags": "Reports opened",
+    "closedFlags": "Reports closed",
+    "pendingReviews": "Versions awaiting review",
+    "openFlags": "Unresolved reports",
+    "downloadsChart": "Downloads per day",
+    "viewsChart": "Page views per day",
+    "growthChart": "New content per day",
+    "moderationChart": "Moderation per day",
+    "platformSplit": "Downloads by platform",
+    "topProjects": "Top projects"
+  },
+  "health": {
+    "title": "Hangar Health Report",
+    "noTopicProject": "Missing discussion topic",
+    "erroredJobs": "Failed jobs",
+    "jobText": "Job type: {0}, Error Type: {1}, Happened: {2}",
+    "staleProjects": "Stale projects",
+    "notPublicProjects": "Hidden projects",
+    "fileSizes": "Project file sizes",
+    "noPlatform": "No platform detected",
+    "missingFileProjects": "Missing File",
+    "empty": "Empty! All good!",
+    "jobRetryScheduled": "Job retry scheduled",
+    "reportQueued": "Health Report queued"
+  },
+  "reviews": {
+    "headline": "{0} released {1} on ",
+    "title": "Review logs",
+    "projectPage": "Project Page",
+    "downloadFile": "Download File",
+    "startReview": "Start Review",
+    "stopReview": "Stop Review",
+    "approve": "Approve",
+    "approvePartial": "Approve Partial",
+    "notUnderReview": "This version is not under review",
+    "reviewMessage": "Review Message",
+    "addMessage": "Add Message",
+    "reopenReview": "Reopen Review",
+    "undoApproval": "Undo Approval",
+    "hideClosed": "Hide all finished reviews",
+    "reviewers": "Reviewers",
+    "toggleLog": "Toggle review log",
+    "hiddenByFilter": "All reviews are hidden by the current filter.",
+    "error": {
+      "noReviewStarted": "There is no unfinished review to add a message to",
+      "notCorrectUser": "You are not the user that started this review",
+      "cannotReopen": "Unable to reopen this review",
+      "onlyOneReview": "Cannot have more than 1 review for a version",
+      "badUndo": "Can only undo approval after an approval"
+    },
+    "presets": {
+      "message": "{msg}",
+      "start": "{name} started a review",
+      "stop": "{name} stopped a review: {msg}",
+      "reopen": "{name} reopened a review",
+      "approve": "{name} approved this version",
+      "approvePartial": "{name} partially approved this version",
+      "undoApproval": "{name} has undone their approval",
+      "reviewTitle": "{name}'s Review"
+    },
+    "state": {
+      "ongoing": "Ongoing",
+      "stopped": "Stopped",
+      "approved": "Approved",
+      "partiallyApproved": "Partially Approved",
+      "lastUpdate": "Last Update: "
+    },
+    "artifacts": {
+      "title": "Files & scans",
+      "scanDetails": "Scan details",
+      "external": "External",
+      "hasExternal": "No external downloads | {0} external download | {0} external downloads",
+      "hasUnscanned": "Nothing unscanned | {0} not scanned | {0} not scanned",
+      "notScannable": "Cannot be scanned",
+      "notScanned": "Not scanned",
+      "severity": "{0} severity"
+    }
+  },
+  "scan": {
+    "title": "Jar scan",
+    "headline": "Automated analysis of {0}",
+    "reviewLogs": "Review logs",
+    "scanAll": "Scan all",
+    "rescanAll": "Rescan all",
+    "scanNow": "Scan now",
+    "rescan": "Rescan",
+    "lastScanned": "Scanned",
+    "highestSeverity": "{0} severity",
+    "findings": "No findings | {0} finding | {0} findings",
+    "occurrences": "{0}x",
+    "search": "Search findings",
+    "clean": "No findings — this file came back clean.",
+    "noResults": "No findings match the current filter.",
+    "notScanned": "Not scanned",
+    "notScannedHint": "This file has not been scanned yet.",
+    "noFile": "No file was uploaded for this platform.",
+    "noPlatforms": "This version has no platforms to scan.",
+    "external": "External",
+    "externalHint": "Files hosted outside of Hangar cannot be scanned.",
+    "decompile": "Decompile with slicer.run",
+    "showMore": "Show 1 more location | Show {0} more locations",
+    "showLess": "Show less",
+    "markSafe": "Mark safe",
+    "markAllSafe": "Mark all safe",
+    "filter": {
+      "label": "Filter findings by severity",
+      "all": "All"
+    },
+    "severity": {
+      "HIGHEST": "Highest",
+      "HIGH": "High",
+      "MEDIUM": "Medium",
+      "LOW": "Low",
+      "LOWEST": "Lowest",
+      "UNKNOWN": "Unknown"
+    },
+    "notify": {
+      "done": "Scanned {0}",
+      "markedSafe": "Marked {0} as safe",
+      "markedAllSafe": "Marked all as safe"
+    }
+  },
+  "apiKeys": {
+    "title": "API Keys",
+    "createNew": "Create new key",
+    "existing": "Existing keys",
+    "name": "Name",
+    "created": "Copy the created key before creating another one or refreshing the page. Do not share this with anyone else.",
+    "keyIdentifier": "Identifier",
+    "permissions": "Permissions",
+    "lastUsed": "Last used",
+    "permissionRequired": "At least one permission needs to be set.",
+    "delete": "Delete",
+    "copy": "Click to copy key to clipboard",
+    "copied": "Copied to clipboard!",
+    "createKey": "Create key",
+    "noKeys": "You haven't created any api keys yet",
+    "success": {
+      "delete": "You have deleted the key: {0}",
+      "create": "You have created the key: {0}"
+    },
+    "error": {
+      "notEnoughPerms": "Not enough permissions to create that key",
+      "duplicateName": "Duplicate key name",
+      "unknownProject": "Unknown project: {0}",
+      "expirationInPast": "The expiration date must be in the future"
+    },
+    "reveal": "Reveal",
+    "hide": "Hide",
+    "selectAll": "Select all",
+    "clearAll": "Clear all",
+    "createHint": "The key is shown once after creation.",
+    "neverUsed": "Never used",
+    "createdTitle": "Key created",
+    "scope": {
+      "title": "Project access",
+      "sub": "Limit the key to specific projects. Endpoints for any other project answer as if the key had no access.",
+      "all": "All projects",
+      "selected": "Selected projects",
+      "filter": "Filter projects",
+      "noMatches": "No projects match \"{0}\"",
+      "noProjects": "You are not a member of any project yet.",
+      "projectRequired": "Pick at least one project, or switch back to all projects.",
+      "limitedTo": "Limited to",
+      "noneLeft": "no projects left"
+    },
+    "expiration": {
+      "title": "Expiration",
+      "sub": "An expired key stops working and can no longer be used to authenticate.",
+      "never": "No expiration",
+      "days": "{0} days",
+      "year": "1 year",
+      "custom": "Custom date",
+      "date": "Expires on",
+      "expiresOn": "Expires",
+      "expiredOn": "Expired",
+      "expired": "Expired",
+      "dateRequired": "Pick an expiration date in the future."
+    }
+  },
+  "auth": {
+    "login": {
+      "main": {
+        "title": "Log in to Hangar"
+      },
+      "sudo": {
+        "title": "Verify your identity",
+        "info": "You need to authenticate again to perform this action."
+      },
+      "twoFactor": {
+        "title": "Two-factor authentication",
+        "info": "Your account uses two-factor authentication. Use one of your saved methods to continue.",
+        "webauthn": {
+          "button": "Use passkey",
+          "genericError": "Passkey authentication failed. Try again, or use another method."
+        }
+      }
+    },
+    "settings": {
+      "profile": {
+        "header": "Profile",
+        "avatar": "Avatar",
+        "tagline": "Tagline",
+        "social": "Social",
+        "socialLinks": {
+          "title": "Links",
+          "description": "Shown as icons on your profile. Leave a field empty to hide it.",
+          "usernamePlaceholder": "username",
+          "discordHint": "Shown as a tooltip on your profile, not as a link.",
+          "websiteHint": "Full URL, including https://"
+        }
+      },
+      "account": {
+        "header": "Account",
+        "username": "Username",
+        "verifyEmail": "Verify email",
+        "currentPassword": "Current Password",
+        "newPassword": "New Password (Optional)",
+        "deletion": {
+          "title": "Delete account",
+          "description": "Schedule your account for permanent deletion. You have seven days to cancel before your account and all {count} projects you own are deleted.",
+          "organizationWarning": "You own {count} organizations. Transfer or delete them before deleting your account.",
+          "button": "Delete account",
+          "modalTitle": "Schedule account deletion",
+          "modalWarning": "This will permanently delete your account and all projects you own after seven days. Type your username to confirm.",
+          "confirmation": "Type {username} to confirm",
+          "scheduled": "Your account is scheduled for permanent deletion on {date}. All projects you own will be deleted.",
+          "cancel": "Cancel account deletion",
+          "requested": "Account deletion scheduled. We sent you a confirmation email.",
+          "cancelled": "Account deletion cancelled.",
+          "confirmationMismatch": "The username confirmation does not match.",
+          "ownsOrganizations": "Transfer or delete the organizations you own first.",
+          "alreadyRequested": "Account deletion has already been requested.",
+          "notRequested": "No account deletion is pending."
+        }
+      },
+      "security": {
+        "header": "Security",
+        "authApp": {
+          "name": "Authenticator App",
+          "none": "Set up a mobile authenticator app to generate one-time passcodes as a two-factor authentication method.",
+          "active": "You have set up an authenticator app as a two-factor method."
+        },
+        "devices": "Devices",
+        "button": {
+          "setupAuthApp": "Setup 2FA via authenticator app",
+          "setupSecurityKey": "Setup 2FA via security key",
+          "linkGithub": "Link a GitHub account",
+          "linkGoogle": "Link a Google account",
+          "linkMicrosoft": "Link a Microsoft account",
+          "linkOther": "Link {0} account",
+          "unlinkAccount": "Unlink {0} account {1}",
+          "unlinkTotp": "Remove authenticator app"
+        },
+        "authAppSetup": {
+          "scan": "Scan the QR code on the right using your favorite authenticator app",
+          "cantScan": "Can't scan? Enter the secret listed below the image!",
+          "enterTotp": "Enter a TOTP code generated by your authenticator app in the box below.",
+          "verifyTotp": "Verify TOTP code and activate"
+        },
+        "securityKeys": {
+          "name": "Security Keys",
+          "keyName": "Name",
+          "unregister": "Unregister",
+          "rename": "Rename",
+          "registerTitle": "Register a new security key",
+          "none": "You have no security keys registered. You can add a trusted device to your account as a two-factor authentication method."
+        },
+        "backupCodes": {
+          "name": "Backup Codes",
+          "info": "If you lose access to your other two-factor methods, you can use a backup code to log in.",
+          "generateNew": "Generate new codes",
+          "modal": {
+            "title": "Save your backup codes",
+            "needConfigure": "If you ever lose access to your main two-factor authentication methods, you can use these backup codes to log in. Store these somewhere safe.",
+            "confirm": "To finish setting up two-factor authentication, confirm that you saved the backup codes by entering one of them below:",
+            "backupCode": "Enter a backup code"
+          }
+        },
+        "twoFactor": {
+          "title": "Two-factor authentication",
+          "description": "Protect your account with an additional sign-in method.",
+          "enabled": "Enabled",
+          "available": "Available",
+          "off": "Off",
+          "configured": "Configured",
+          "notConfigured": "Not configured",
+          "securityKeyCount": "No keys registered | {0} key registered | {0} keys registered",
+          "backupCodesReady": "Recovery codes are ready.",
+          "backupCodesUnavailable": "Available after setting up two-factor authentication.",
+          "setUp": "Set up",
+          "remove": "Remove",
+          "manage": "Manage",
+          "view": "View",
+          "hide": "Hide",
+          "added": "Added",
+          "addKey": "Add security key"
+        },
+        "connectedAccounts": {
+          "title": "Connected accounts",
+          "description": "Sign in to Hangar with an external provider.",
+          "connected": "Connected",
+          "off": "Off",
+          "notConnected": "Not connected",
+          "connect": "Connect",
+          "connectAnother": "Connect another {0} account",
+          "disconnect": "Disconnect"
+        },
+        "unlinkOAuth": {
+          "cantUnlink": "You can't unlink your last oauth credential if you don't have a password set",
+          "modal": {
+            "title": "Successfully unlinked!",
+            "message": "Successfully unlinked your {0} account!",
+            "unlinkUrl": "Click here to remove the Hangar app from your {0} account"
+          }
+        }
+      },
+      "apiKeys": {
+        "header": "API keys"
+      },
+      "misc": {
+        "header": "Display",
+        "description": "Customize how Hangar looks and reads.",
+        "theme": "Theme",
+        "systemTheme": "System",
+        "lightTheme": "Light",
+        "darkTheme": "Dark",
+        "accentColor": "Accent color",
+        "accentDescription": "Used for buttons, links, and highlights.",
+        "language": "Language",
+        "languageDescription": "Changing the language reloads the page.",
+        "alert": {
+          "colorAlert": " ",
+          "languageAlert": "We only have english right now, but if you want to help us translate the website, please contact us on discord!"
+        }
+      }
+    }
+  },
+  "apiDocs": {
+    "title": "API Docs"
+  },
+  "importer": {
+    "title": "Import Projects",
+    "notLoggedIn": "You need to be logged in to use the project importer.",
+    "step1": {
+      "title": "Intro",
+      "text1": "This page allows you to import projects from other platforms. Right now only Spigot is supported.",
+      "text2": "Before continuing, please review the ProjectKorra Submission Guideline.",
+      "continue": "Agree",
+      "back": "Abort"
+    },
+    "step2": {
+      "title": "User selection",
+      "text": "Enter the Spigot username to search for your profile.",
+      "continue": "Load Projects"
+    },
+    "step3": {
+      "title": "Project selection",
+      "label": "Select the projects you want to import.",
+      "continue": "Convert Projects",
+      "back": "Back"
+    },
+    "step4": {
+      "title": "Project conversion",
+      "continue": "Create Projects",
+      "back": "Back"
+    },
+    "step5": {
+      "title": "Finishing"
+    }
+  },
+  "platformVersions": {
+    "title": "Configure Platform Versions",
+    "platform": "Platform",
+    "versions": "Versions",
+    "addVersion": "Add Version",
+    "saveChanges": "Save Changes",
+    "success": "Updated platform versions"
+  },
+  "flagReview": {
+    "notification": {
+      "projectTitle": "Send notification to members of {0}",
+      "reporterTitle": "Send notification to {0}",
+      "asWarning": "Send as warning",
+      "button": "Notify project's members",
+      "reporterButton": "Notify reporter",
+      "prompt": "Notification content"
+    },
+    "title": "Reports",
+    "resolved": "Resolved reports",
+    "unresolved": "Unresolved reports",
+    "statusResolved": "Resolved",
+    "statusOpen": "Open",
+    "reportedWord": "reported",
+    "reportedByLabel": "Reported by",
+    "noFlags": "There are no reports to review.",
+    "markResolved": "Mark resolved",
+    "markUnresolved": "Mark unresolved",
+    "line1": "{0} reported {1} on {2}",
+    "line2": "Reason: {0}",
+    "line3": "Comment: {0}",
+    "subtitle": "Reports submitted by users about projects.",
+    "projectVisibility": "Visibility: {0}",
+    "resolvedBy": "Resolved by {0}",
+    "loadNotifications": "Load notifications",
+    "noNotifications": "No notifications have been sent for this report.",
+    "sortLabel": "Sort reports",
+    "sortNewest": "Newest",
+    "sortOldest": "Oldest",
+    "sortRecentlyResolved": "Recently resolved",
+    "sortLeastRecentlyResolved": "Oldest resolved",
+    "perPage": "Reports per page",
+    "reportedAt": "Reported {0}",
+    "resolvedAtBy": "Resolved {0} by {1}"
+  },
+  "userActivity": {
+    "title": "{0}'s Activity",
+    "subtitle": "Moderation actions carried out by this user.",
+    "viewProfile": "View profile",
+    "reviews": "Reviews",
+    "flags": "Reports",
+    "reviewApproved": "Review Approved",
+    "flagResolved": "Flag Resolved",
+    "noReviews": "No reviews carried out yet.",
+    "noFlags": "No reports resolved yet.",
+    "error": {
+      "isOrg": "Cannot show activity for organization users"
+    }
+  },
+  "userAdmin": {
+    "title": "Edit User",
+    "rename": "Rename",
+    "renameTitle": "Rename account",
+    "renameHint": "The user keeps their projects, versions and uploads. They will be emailed about the change, and the old name becomes available to others.",
+    "newUsername": "New username",
+    "renamed": "Renamed to {0}",
+    "roles": "Roles",
+    "noRoles": "No roles assigned.",
+    "selectRole": "Add a role",
+    "organizations": "Organizations",
+    "organization": "Organization",
+    "noOrganizations": "Not a member of any organization.",
+    "projects": "Projects",
+    "project": "Project",
+    "noProjects": "No projects owned.",
+    "owner": "Owner",
+    "role": "Role",
+    "accepted": "Accepted",
+    "visibility": "Visibility",
+    "sidebar": "Other Administration",
+    "hangarAuth": "HangarAuth Profile",
+    "forum": "Forum Profile"
+  },
+  "userList": {
+    "title": "User List"
+  },
+  "userActionLog": {
+    "title": "User Action Log",
+    "user": "User",
+    "address": "IP Address",
+    "time": "Time",
+    "action": "Action",
+    "context": "Context",
+    "oldState": "Old State",
+    "newState": "New State",
+    "markdownView": "Markdown View",
+    "diffView": "Diff View",
+    "entries": "{count} entry | {count} entries",
+    "subject": "Subject",
+    "author": "Project author",
+    "projectSlug": "Project slug",
+    "allActions": "All actions",
+    "dateFrom": "From",
+    "dateTo": "To",
+    "clearFilters": "Clear filters",
+    "sortNewest": "Newest first",
+    "sortOldest": "Oldest first",
+    "empty": "No log entries match these filters",
+    "details": "Details",
+    "emptyValue": "empty",
+    "defaultIcon": "default",
+    "types": {
+      "ProjectVisibilityChanged": "The project visibility state was changed",
+      "ProjectRename": "The project was renamed",
+      "ProjectFlagged": "The project got flagged",
+      "ProjectSettingsChanged": "The project settings were changed",
+      "ProjectIconChanged": "The project icon was changed",
+      "ProjectFlagResolved": "The flag was resolved",
+      "ProjectChannelCreated": "A project channel was created",
+      "ProjectChannelEdited": "A project channel was edited",
+      "ProjectChannelDeleted": "A project channel was deleted",
+      "ProjectInvitesSent": "Project invites were sent",
+      "ProjectInviteDeclined": "A project invite was declined",
+      "ProjectInviteUnaccepted": "A project invite was unaccepted",
+      "ProjectMemberAdded": "A project member was added",
+      "ProjectMembersRemoved": "Project members were removed",
+      "ProjectMemberRolesChanged": "Project members had their roles updated",
+      "ProjectPageCreated": "A project page was created",
+      "ProjectPageDeleted": "A project page was deleted",
+      "ProjectPageEdited": "A project page was edited",
+      "VersionVisibilityChanged": "The version's visibility state was changed",
+      "VersionDeleted": "The version was deleted",
+      "VersionCreated": "A new version was uploaded",
+      "VersionDescriptionChanged": "The version description was changed",
+      "VersionReviewStateChanged": "The version's review state was changed",
+      "VersionPluginDependencyAdded": "A plugin dependency was added",
+      "VersionPluginDependencyEdited": "A plugin dependency was edited",
+      "VersionPluginDependencyRemoved": "A plugin dependency was removed",
+      "VersionPlatformDependencyAdded": "A platform dependency was added",
+      "VersionPlatformDependencyRemoved": "A platform dependency was removed",
+      "UserRenamed": "The user was renamed",
+      "UserTaglineChanged": "The user tagline changed",
+      "UserSocialsChanged": "The user socials changed",
+      "UserLocked": "This user is locked",
+      "UserUnlocked": "This user is unlocked",
+      "UserApikeyCreated": "An apikey was created",
+      "UserApikeyDeleted": "An apikey was deleted",
+      "OrganizationInvitesSent": "Organization invites were sent",
+      "OrganizationInviteDeclined": "An organization invite was declined",
+      "OrganizationInviteUnaccepted": "An organization invite was unaccepted",
+      "OrganizationMemberAdded": "An organization member was added",
+      "OrganizationMembersRemoved": "Organization members were removed",
+      "OrganizationMemberRolesChanged": "Organization members had their roles updated"
+    }
+  },
+  "versionApproval": {
+    "title": "Version Approvals",
+    "inReview": "In Review",
+    "approvalQueue": "Approval queue",
+    "queuedBy": "Queued by",
+    "status": "Status",
+    "project": "Project",
+    "date": "Date",
+    "version": "Version",
+    "started": "Started: {0}",
+    "ended": "Ended: {0}",
+    "statuses": {
+      "ongoing": "{0} ongoing",
+      "stopped": "{0} stopped",
+      "approved": "{0} approved"
+    },
+    "subtitle": "Versions waiting on a reviewer before they go public.",
+    "queueClear": "Nothing is waiting for review.",
+    "noneInReview": "No reviews are in progress.",
+    "toggleReviewers": "Toggle reviewers",
+    "search": "Search project, version or author",
+    "sortLabel": "Sort versions",
+    "sortNewest": "Newest first",
+    "sortOldest": "Oldest first",
+    "perPage": "Versions per page",
+    "noResults": "No versions match your search."
+  },
+  "projectApproval": {
+    "title": "Project Approvals",
+    "sendForApproval": "You have sent the project for approval",
+    "noProjects": "No projects",
+    "needsApproval": "Needs Approval",
+    "awaitingChanges": "Awaiting Changes",
+    "description": "{0} requested changes on {1}",
+    "subtitle": "Projects waiting on a moderation decision.",
+    "requestedBy": "Changes requested by {0}",
+    "queueClear": "No projects are waiting for approval.",
+    "noAwaitingChanges": "No projects are awaiting changes."
+  },
+  "donate": {
+    "success": "Thank you for your {0} {1} donation to {2}!",
+    "buttonError": "Something went wrong with rendering the donation button!"
+  },
+  "lang": {
+    "button": "Switch Language",
+    "title": "Switch Language",
+    "available": "Available Language",
+    "hangarAuth": "This only change the locale for your current browser (as a cookie). Click here to change your lang on paper auth for all paper services"
+  },
+  "validation": {
+    "email": "Email is invalid",
+    "required": "{property} is required",
+    "requiredIf": "{property} is required",
+    "maxLength": "Maximum length is {max}",
+    "minLength": "Minimum length is {min}",
+    "pattern": "{property} is invalid, '{model}' doesn't match pattern '{regex}'",
+    "noDuplicated": "Can only select each {property} once!",
+    "url": "Invalid URL format (did you forget https://?)",
+    "maxFileSize": "File is too large, max size is 10MB",
+    "validProjectName": "Project name is already taken"
+  },
+  "fieldError": {
+    "url": "Invalid url value for {0}, got {1} (did you forget https://?)"
+  },
+  "prompts": {
+    "confirm": "Got it!",
+    "changeAvatar": {
+      "title": "Change your avatar!",
+      "message": "Welcome to your new organization! Start by changing it's avatar by clicking on it."
+    }
+  },
+  "error": {
+    "401": "You must be logged in for this",
+    "403": "You do not have permission to do that",
+    "404": "404 Not found",
+    "userLocked": "Your account is locked.",
+    "unknown": "An error occurred",
+    "aal1": "You need to verify your email first",
+    "aal2": "You need to setup 2fa first",
+    "privileged": "You need to be in a privileged session to do this",
+    "captcha": "Error while verifying the security challenge: {0}. Please try again."
+  },
+  "settings": {
+    "avatar": {
+      "reset": "Reset to default",
+      "hint": "Drag to reposition, scroll to zoom. The selected square is what gets saved.",
+      "choose": "Choose image...",
+      "dropHint": "Click to choose an image, or drop one here",
+      "currentImage": "Current image"
+    }
+  },
+  "permissionGroup": {
+    "versions": "Versions",
+    "project": "Project",
+    "projects": "Projects",
+    "organization": "Organization",
+    "people": "People"
+  },
+  "permission": {
+    "create_version": "Create versions",
+    "edit_version": "Edit versions",
+    "delete_version": "Delete versions",
+    "edit_channels": "Manage channels",
+    "edit_page": "Edit pages",
+    "edit_subject_settings": "Edit settings",
+    "delete_project": "Delete projects",
+    "manage_subject_members": "Manage members",
+    "create_project": "Create projects"
+  }
+}

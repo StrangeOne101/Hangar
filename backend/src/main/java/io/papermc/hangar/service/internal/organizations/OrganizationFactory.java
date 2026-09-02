@@ -8,7 +8,8 @@ import io.papermc.hangar.db.dao.internal.table.UserDAO;
 import io.papermc.hangar.db.dao.internal.table.projects.ProjectsDAO;
 import io.papermc.hangar.exceptions.HangarApiException;
 import io.papermc.hangar.model.common.roles.GlobalRole;
-import io.papermc.hangar.model.common.roles.OrganizationRole;
+import io.papermc.hangar.model.common.MemberPermissions;
+import io.papermc.hangar.model.db.roles.OrganizationRoleTable;
 import io.papermc.hangar.model.db.OrganizationTable;
 import io.papermc.hangar.model.db.UserTable;
 import io.papermc.hangar.model.db.projects.ProjectTable;
@@ -52,18 +53,18 @@ public class OrganizationFactory extends HangarComponent {
 
     @Transactional
     public OrganizationTable createOrganization(final String name) {
-        if (!this.config.org.enabled()) {
+        if (!this.config.orgs().enabled()) {
             throw new HangarApiException(HttpStatus.BAD_REQUEST, "organization.new.error.notEnabled");
         }
-        if (this.organizationService.getOrganizationsOwnedBy(this.getHangarPrincipal().getId()).size() >= this.config.org.createLimit()) {
-            throw new HangarApiException(HttpStatus.BAD_REQUEST, "organization.new.error.tooManyOrgs", this.config.org.createLimit());
+        if (this.organizationService.getOrganizationsOwnedBy(this.getHangarPrincipal().getId()).size() >= this.config.orgs().createLimit()) {
+            throw new HangarApiException(HttpStatus.BAD_REQUEST, "organization.new.error.tooManyOrgs", this.config.orgs().createLimit());
         }
 
-        final String dummyEmail = name.replaceAll("[^a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]", "") + '@' + this.config.org.dummyEmailDomain();
+        final String dummyEmail = name.replaceAll("[^a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]", "") + '@' + this.config.orgs().dummyEmailDomain();
         final UserTable userTable = this.userDAO.create(UUID.randomUUID(), name, dummyEmail, "", "", List.of(), false, null, true, this.avatarService.getDefaultAvatarUrl(), new JSONB(Map.of()));
         final OrganizationTable organizationTable = this.organizationDAO.insert(new OrganizationTable(userTable.getId(), name, this.getHangarPrincipal().getId(), userTable.getId(), userTable.getUuid()));
-        this.globalRoleService.addRole(GlobalRole.ORGANIZATION.create(null, userTable.getUuid(), userTable.getId(), false));
-        this.organizationMemberService.addNewAcceptedByDefaultMember(OrganizationRole.ORGANIZATION_OWNER.create(organizationTable.getId(), userTable.getUuid(), this.getHangarPrincipal().getId(), true));
+        this.globalRoleService.addRole(GlobalRole.ORGANIZATION.create(userTable.getId()));
+        this.organizationMemberService.addNewAcceptedByDefaultMember(new OrganizationRoleTable(this.getHangarPrincipal().getId(), MemberPermissions.ORGANIZATION_OWNER, MemberPermissions.DEFAULT_OWNER_TITLE, true, true, organizationTable.getId(), userTable.getUuid(), null));
         return organizationTable;
     }
 

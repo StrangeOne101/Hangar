@@ -149,11 +149,6 @@
             "permission": "10000000000000000000000"
         },
         {
-            "value": "post_as_organization",
-            "frontendName": "PostAsOrganization",
-            "permission": "1000000000000000000000"
-        },
-        {
             "value": "mod_notes_and_flags",
             "frontendName": "ModNotesAndFlags",
             "permission": "1000000000000000000000000"
@@ -206,7 +201,7 @@
         {
             "value": "restore_project",
             "frontendName": "RestoreProject",
-            "permission": "100000000000000"
+            "permission": "1000000000000000000000000000000000000000000000"
         },
         {
             "value": "hard_delete_project",
@@ -224,191 +219,6 @@
             "permission": "10000000000000000000000000000000000000000000"
         }
     ],
-    "platforms": [
-        {
-            "name": "Paper",
-            "category": "Server",
-            "url": "https://papermc.io/downloads",
-            "enumName": "PAPER",
-            "visible": true,
-            "platformVersions": [
-                {
-                    "version": "1.19",
-                    "subVersions": [
-                        "1.19.4",
-                        "1.19.3",
-                        "1.19.2",
-                        "1.19.1",
-                        "1.19"
-                    ]
-                },
-                {
-                    "version": "1.18",
-                    "subVersions": [
-                        "1.18.2",
-                        "1.18.1",
-                        "1.18"
-                    ]
-                },
-                {
-                    "version": "1.17",
-                    "subVersions": [
-                        "1.17.1",
-                        "1.17"
-                    ]
-                },
-                {
-                    "version": "1.16",
-                    "subVersions": [
-                        "1.16.5",
-                        "1.16.4",
-                        "1.16.3",
-                        "1.16.2",
-                        "1.16.1",
-                        "1.16"
-                    ]
-                },
-                {
-                    "version": "1.15",
-                    "subVersions": [
-                        "1.15.2",
-                        "1.15.1",
-                        "1.15"
-                    ]
-                },
-                {
-                    "version": "1.14",
-                    "subVersions": [
-                        "1.14.4",
-                        "1.14.3",
-                        "1.14.2",
-                        "1.14.1",
-                        "1.14"
-                    ]
-                },
-                {
-                    "version": "1.13",
-                    "subVersions": [
-                        "1.13.2",
-                        "1.13.1",
-                        "1.13"
-                    ]
-                },
-                {
-                    "version": "1.12",
-                    "subVersions": [
-                        "1.12.2",
-                        "1.12.1",
-                        "1.12"
-                    ]
-                },
-                {
-                    "version": "1.11",
-                    "subVersions": [
-                        "1.11.2",
-                        "1.11.1",
-                        "1.11"
-                    ]
-                },
-                {
-                    "version": "1.10",
-                    "subVersions": [
-                        "1.10.2",
-                        "1.10.1",
-                        "1.10"
-                    ]
-                },
-                {
-                    "version": "1.9",
-                    "subVersions": [
-                        "1.9.4",
-                        "1.9.3",
-                        "1.9.2",
-                        "1.9.1",
-                        "1.9"
-                    ]
-                },
-                {
-                    "version": "1.8",
-                    "subVersions": []
-                }
-            ]
-        },
-        {
-            "name": "Waterfall",
-            "category": "Proxy",
-            "url": "https://papermc.io/downloads#Waterfall",
-            "enumName": "WATERFALL",
-            "visible": true,
-            "platformVersions": [
-                {
-                    "version": "1.19",
-                    "subVersions": []
-                },
-                {
-                    "version": "1.18",
-                    "subVersions": []
-                },
-                {
-                    "version": "1.17",
-                    "subVersions": []
-                },
-                {
-                    "version": "1.16",
-                    "subVersions": []
-                },
-                {
-                    "version": "1.15",
-                    "subVersions": []
-                },
-                {
-                    "version": "1.14",
-                    "subVersions": []
-                },
-                {
-                    "version": "1.13",
-                    "subVersions": []
-                },
-                {
-                    "version": "1.12",
-                    "subVersions": []
-                },
-                {
-                    "version": "1.11",
-                    "subVersions": []
-                }
-            ]
-        },
-        {
-            "name": "Velocity",
-            "category": "Proxy",
-            "url": "https://www.velocitypowered.com/downloads",
-            "enumName": "VELOCITY",
-            "visible": true,
-            "platformVersions": [
-                {
-                    "version": "3.2",
-                    "subVersions": []
-                },
-                {
-                    "version": "3.1",
-                    "subVersions": []
-                },
-                {
-                    "version": "3.0",
-                    "subVersions": []
-                },
-                {
-                    "version": "1.1",
-                    "subVersions": []
-                },
-                {
-                    "version": "1.0",
-                    "subVersions": []
-                }
-            ]
-        }
-    ],
     "validations": {
         "project": {
             "name": {
@@ -420,7 +230,7 @@
             },
             "license": {
                 "regex": "^[a-zA-Z0-9-_.() +]*$",
-                "max": 15
+                "max": 20
             },
             "keywords": {
                 "max": 5
@@ -454,7 +264,7 @@
         },
         "version": {
             "regex": "^[a-zA-Z0-9-_.+]+$",
-            "max": 30
+            "max": 32
         },
         "org": {
             "regex": "^[a-zA-Z0-9-_]+$",
@@ -469,12 +279,6 @@
             "name": "CHANGE_AVATAR",
             "titleKey": "prompts.changeAvatar.title",
             "messageKey": "prompts.changeAvatar.message"
-        }
-    ],
-    "announcements": [
-        {
-            "text": "This is a local server for testing purposes. There is a public staging instance at <a href=\"https://hangar.papermc.dev\" style=\"text-decoration: underline\">https://hangar.papermc.dev</a> and the production site can be found at <a href=\"https://hangar.papermc.io\" style=\"text-decoration: underline\">https://hangar.papermc.io</a>.",
-            "color": "#2f4476"
         }
     ],
     "visibilities": [
@@ -514,139 +318,7 @@
             "title": "visibility.name.softDelete"
         }
     ],
-    "licenses": [
-        "Unspecified",
-        "MIT",
-        "Apache 2.0",
-        "GPL",
-        "LGPL",
-        "AGPL",
-        "Other"
-    ],
-    "orgRoles": [
-        {
-            "value": "Organization_Owner",
-            "roleId": 25,
-            "permissions": "11000001111011111110100",
-            "roleCategory": "organization",
-            "title": "Owner",
-            "color": "#a855f7",
-            "rank": 10,
-            "assignable": false
-        },
-        {
-            "value": "Organization_Admin",
-            "roleId": 24,
-            "permissions": "1000001111011111110100",
-            "roleCategory": "organization",
-            "title": "Owner",
-            "color": "#a855f7",
-            "rank": 20,
-            "assignable": true
-        },
-        {
-            "value": "Organization_Maintainer",
-            "roleId": 23,
-            "permissions": "1000001111001110010000",
-            "roleCategory": "organization",
-            "title": "Maintainer",
-            "color": "#14b8a6",
-            "rank": 30,
-            "assignable": true
-        },
-        {
-            "value": "Organization_Developer",
-            "roleId": 22,
-            "permissions": "1000000000001010000000",
-            "roleCategory": "organization",
-            "title": "Developer",
-            "color": "#f97316",
-            "rank": 40,
-            "assignable": true
-        },
-        {
-            "value": "Organization_Editor",
-            "roleId": 21,
-            "permissions": "1000000000001010000000",
-            "roleCategory": "organization",
-            "title": "Editor",
-            "color": "#f59e0b",
-            "rank": 50,
-            "assignable": true
-        },
-        {
-            "value": "Organization_Support",
-            "roleId": 20,
-            "permissions": "1000000000000010000000",
-            "roleCategory": "organization",
-            "title": "Support",
-            "color": "#f59e0b",
-            "rank": 60,
-            "assignable": true
-        }
-    ],
-    "projectRoles": [
-        {
-            "value": "Project_Owner",
-            "roleId": 35,
-            "permissions": "1111011011110100",
-            "roleCategory": "project",
-            "title": "Owner",
-            "color": "#a855f7",
-            "rank": 10,
-            "assignable": false
-        },
-        {
-            "value": "Project_Admin",
-            "roleId": 34,
-            "permissions": "1111001010110100",
-            "roleCategory": "project",
-            "title": "Admin",
-            "color": "#a855f7",
-            "rank": 20,
-            "assignable": true
-        },
-        {
-            "value": "Project_Maintainer",
-            "roleId": 33,
-            "permissions": "1111001010000000",
-            "roleCategory": "project",
-            "title": "Maintainer",
-            "color": "#14b8a6",
-            "rank": 30,
-            "assignable": true
-        },
-        {
-            "value": "Project_Developer",
-            "roleId": 32,
-            "permissions": "1010000000",
-            "roleCategory": "project",
-            "title": "Developer",
-            "color": "#f97316",
-            "rank": 40,
-            "assignable": true
-        },
-        {
-            "value": "Project_Editor",
-            "roleId": 31,
-            "permissions": "1010000000",
-            "roleCategory": "project",
-            "title": "Editor",
-            "color": "#f59e0b",
-            "rank": 50,
-            "assignable": true
-        },
-        {
-            "value": "Project_Support",
-            "roleId": 30,
-            "permissions": "10000000",
-            "roleCategory": "project",
-            "title": "Support",
-            "color": "#f59e0b",
-            "rank": 60,
-            "assignable": true
-        }
-    ],
+    "licenses": ["Unspecified", "MIT", "Apache 2.0", "GPL", "LGPL", "AGPL", "Other"],
     "globalRoles": [
         {
             "value": "PaperMC_Core",
@@ -721,7 +393,7 @@
         {
             "value": "Organization",
             "roleId": 100,
-            "permissions": "11000001111011111110100",
+            "permissions": "10000001111011111110000",
             "roleCategory": "global",
             "title": "Organization",
             "color": "#a855f7",
@@ -844,6 +516,7 @@
         "user_apikey_created",
         "user_apikey_deleted",
         "user_locked",
+        "user_renamed",
         "user_socials_changed",
         "user_tagline_changed",
         "user_unlocked",
@@ -881,14 +554,43 @@
             "imgur.com",
             "giphy.com",
             "media.giphy.com",
-            "bstats.org"
+            "bstats.org",
+            "img.shields.io"
         ],
-        "oauthProviders": [
-            "github",
-            "google",
-            "microsoft"
-        ]
+        "oauthProviders": ["github", "google", "microsoft"]
     },
+    "projectPermissions": [
+        {
+            "name": "project",
+            "permissions": ["edit_subject_settings", "edit_page", "edit_channels", "delete_project"]
+        },
+        {
+            "name": "versions",
+            "permissions": ["create_version", "edit_version", "delete_version"]
+        },
+        {
+            "name": "people",
+            "permissions": ["manage_subject_members"]
+        }
+    ],
+    "organizationPermissions": [
+        {
+            "name": "organization",
+            "permissions": ["edit_subject_settings"]
+        },
+        {
+            "name": "projects",
+            "permissions": ["create_project", "edit_page", "edit_channels", "delete_project"]
+        },
+        {
+            "name": "versions",
+            "permissions": ["create_version", "edit_version", "delete_version"]
+        },
+        {
+            "name": "people",
+            "permissions": ["manage_subject_members"]
+        }
+    ],
     "tags": [
         {
             "name": "CUSTOM_ABILITY",

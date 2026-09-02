@@ -2,10 +2,11 @@
 # General #
 ###########
 server:
+  address: 0.0.0.0
   port: 8080
-  servlet:
-    encoding:
-      charset: "UTF-8"
+  tomcat:
+    mbeanregistry:
+      enabled: true
 
 spring:
   application:
@@ -20,6 +21,8 @@ spring:
     url: jdbc:postgresql://localhost:5432/hangar
     username: hangar
     password: hangar
+    hikari:
+      maximum-pool-size: 20
   security:
     filter:
       order: 1000
@@ -27,11 +30,13 @@ spring:
     multipart:
       max-file-size: 5MB
       max-request-size: 5MB
+    encoding:
+      charset: "UTF-8"
   devtools:
     restart:
       additional-exclude: work/**
       quiet-period: 900
-  jackson:
+  jackson2:
     serialization:
       WRITE_DATES_AS_TIMESTAMPS: false
     date-format: com.fasterxml.jackson.databind.util.StdDateFormat
@@ -40,11 +45,16 @@ spring:
     aws:
       s3:
         endpoint: "${hangar.storage.object-storage-endpoint}"
+        checksum-validation-enabled: false
     kubernetes:
       secrets:
         enableApi: true
   jmx:
     enabled: false
+
+  threads:
+    virtual:
+      enabled: true
 
 springdoc:
   writer-with-order-by-keys: true
@@ -54,7 +64,7 @@ springdoc:
 management:
   endpoints:
     access:
-      default: none
+      default: read_only
     web:
       exposure:
         include: "*"
@@ -65,6 +75,7 @@ management:
 hangar:
   dev: true
   base-url: "http://localhost:3333"
+  url-regex: "^(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]+\\.[^\\s]{2,})"
   allow-indexing: true
   disable-jgroups: true
   disable-ratelimiting: false
@@ -84,9 +95,12 @@ hangar:
       color: "#2f4476"
 
   update-tasks:
-    homepage: 2m
-    version-downloads: 2m
+    homepage: 10m
+    version-downloads: 10m
     project-views: 10m
+    project-index: 10m
+    version-index: 10m
+    account-deletion: 1h
 
   channels:
     max-name-len: 15
@@ -109,8 +123,8 @@ hangar:
 
   projects:
     max-name-len: 28
-    max-version-name-len: 30
-    max-license-name-len: 15
+    max-version-name-len: 32
+    max-license-name-len: 20
     max-dependencies: 100
     max-pages: 50
     max-bbcode-len: 40000
@@ -132,6 +146,10 @@ hangar:
     name-regex: "^[a-zA-Z0-9-_]{3,}$"
     version-name-regex: "^[a-zA-Z0-9-_.+]+$"
     license-name-regex: "^[a-zA-Z0-9-_.() +]*$"
+
+  discovery:
+    max-age-days: 365
+    per-bucket: 2
 
   orgs:
     create-limit: 5
@@ -159,7 +177,7 @@ hangar:
     refresh-token-expiry: 30 # days
     rp-name: "Hangar"
     rp-id: "localhost"
-    turnstileSecret: ""
+    turnstile-secret: ""
     safe-download-hosts:
       - "dev.bukkit.org"
       - "github.com"
@@ -183,6 +201,7 @@ hangar:
       - "giphy.com"
       - "media.giphy.com"
       - "bstats.org"
+      - "img.shields.io"
     o-auth-enabled: true
     o-auth-providers:
       - name: "github"
@@ -229,10 +248,6 @@ hangar:
     cdn-endpoint: "http://127.0.0.1:9000"
     cdn-include-bucket: true
 
-  cors:
-    allowed-hosts:
-      - api.spigotmc.org
-
   image:
     quality: 0.75
     size: 256
@@ -249,6 +264,11 @@ hangar:
     password: "password"
     totp-secret: "JBSWY3DPEHPK3PXP"
 
+  meili:
+    url: "http://localhost:7700"
+    key: ""
+    prefix: "local-"
+
 #################
 # Debug Logging #
 #################
@@ -256,6 +276,7 @@ logging:
   level:
     root: INFO
     org.springframework: INFO
+    #org.springframework.web: DEBUG
     org.springframework.context.support.PostProcessorRegistrationDelegate: ERROR
     io.papermc.hangar.service.internal.JobService: DEBUG
     http-client-logger: INFO

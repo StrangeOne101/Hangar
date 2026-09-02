@@ -1,10 +1,12 @@
 package io.papermc.hangar.controller.api.v1;
 
 import io.papermc.hangar.controller.api.v1.interfaces.IVersionsController;
+import io.papermc.hangar.controller.extras.pagination.PaginationType;
 import io.papermc.hangar.controller.extras.pagination.annotations.ApplicableFilters;
 import io.papermc.hangar.controller.extras.pagination.annotations.ConfigurePagination;
 import io.papermc.hangar.controller.extras.pagination.filters.versions.VersionChannelFilter;
 import io.papermc.hangar.controller.extras.pagination.filters.versions.VersionPlatformFilter;
+import io.papermc.hangar.controller.extras.pagination.filters.versions.VersionPlatformVersionFilter;
 import io.papermc.hangar.controller.internal.config.VersionControllerConfig;
 import io.papermc.hangar.model.api.PaginatedResult;
 import io.papermc.hangar.model.api.project.version.UploadedVersion;
@@ -31,7 +33,7 @@ import java.util.List;
 import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.boot.web.server.servlet.context.ServletComponentScan;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,9 +65,24 @@ public class VersionsController implements IVersionsController {
         return this.versionsApiService.uploadVersion(project, files, versionUpload);
     }
 
+    @Unlocked
+    @RequireAal(1)
+    @Override
+    @RateLimit(overdraft = 5, refillTokens = 1, refillSeconds = 5)
+    @PermissionRequired(type = PermissionType.PROJECT, perms = NamedPermission.CREATE_VERSION, args = "{#project}")
+    public UploadedVersion uploadVersion(final String author, final ProjectTable project, final List<MultipartFile> files, final VersionUpload versionUpload) {
+        return this.versionsApiService.uploadVersion(project, files, versionUpload);
+    }
+
     @Override
     @VisibilityRequired(type = VisibilityRequired.Type.VERSION, args = "{#version}")
     public Version getVersion(final ProjectTable project, final ProjectVersionTable version) {
+        return this.versionsApiService.getVersion(version);
+    }
+
+    @Override
+    @VisibilityRequired(type = VisibilityRequired.Type.VERSION, args = "{#version}")
+    public Version getVersion(final String author, final ProjectTable project, final ProjectVersionTable version) {
         return this.versionsApiService.getVersion(version);
     }
 
@@ -77,11 +94,19 @@ public class VersionsController implements IVersionsController {
 
     @Override
     @VisibilityRequired(type = VisibilityRequired.Type.PROJECT, args = "{#project}")
-    @ApplicableFilters({VersionChannelFilter.class, VersionPlatformFilter.class})
+    @ApplicableFilters({VersionChannelFilter.class, VersionPlatformFilter.class, VersionPlatformVersionFilter.class})
     public PaginatedResult<Version> getVersions(final ProjectTable project,
-                                                @ConfigurePagination(defaultLimitString = "@hangarConfig.projects.initVersionLoad", maxLimit = 25) final @NotNull RequestPagination pagination,
+                                                @ConfigurePagination(defaultLimitString = "@'hangar-io.papermc.hangar.config.hangar.HangarConfig'.projects.initVersionLoad", maxLimit = 25, paginationType = PaginationType.MEILI) final @NotNull RequestPagination pagination,
                                                 @RequestParam(required = false, defaultValue = "true") final boolean includeHiddenChannels) {
         return this.versionsApiService.getVersions(project, pagination, includeHiddenChannels);
+    }
+
+    @Override
+    @VisibilityRequired(type = VisibilityRequired.Type.PROJECT, args = "{#project}")
+    @ApplicableFilters({VersionChannelFilter.class, VersionPlatformFilter.class, VersionPlatformVersionFilter.class})
+    public PaginatedResult<Version> getVersions(final String author, final ProjectTable project,
+                                                @ConfigurePagination(defaultLimitString = "@'hangar-io.papermc.hangar.config.hangar.HangarConfig'.projects.initVersionLoad", maxLimit = 25, paginationType = PaginationType.MEILI) final @NotNull RequestPagination pagination) {
+        return this.versionsApiService.getVersions(project, pagination, true);
     }
 
     @Override
@@ -92,13 +117,31 @@ public class VersionsController implements IVersionsController {
 
     @Override
     @VisibilityRequired(type = VisibilityRequired.Type.PROJECT, args = "{#project}")
+    public String getLatestReleaseVersion(final String author, final ProjectTable project) {
+        return this.versionsApiService.latestVersion(project);
+    }
+
+    @Override
+    @VisibilityRequired(type = VisibilityRequired.Type.PROJECT, args = "{#project}")
     public String getLatestVersion(final ProjectTable project, final @NotNull String channel) {
+        return this.versionsApiService.latestVersion(project, channel);
+    }
+
+    @Override
+    @VisibilityRequired(type = VisibilityRequired.Type.PROJECT, args = "{#project}")
+    public String getLatestVersion(final String author, final ProjectTable project, final @NotNull String channel) {
         return this.versionsApiService.latestVersion(project, channel);
     }
 
     @Override
     @VisibilityRequired(type = VisibilityRequired.Type.VERSION, args = "{#version}")
     public Map<String, VersionStats> getVersionStats(final ProjectTable project, final ProjectVersionTable version, final @NotNull OffsetDateTime fromDate, final @NotNull OffsetDateTime toDate) {
+        return this.versionsApiService.getVersionStats(version, fromDate, toDate);
+    }
+
+    @Override
+    @VisibilityRequired(type = VisibilityRequired.Type.VERSION, args = "{#version}")
+    public Map<String, VersionStats> getVersionStats(final String author, final ProjectTable project, final ProjectVersionTable version, final @NotNull OffsetDateTime fromDate, final @NotNull OffsetDateTime toDate) {
         return this.versionsApiService.getVersionStats(version, fromDate, toDate);
     }
 
@@ -112,6 +155,13 @@ public class VersionsController implements IVersionsController {
     @RateLimit(overdraft = 10, refillTokens = 2)
     @VisibilityRequired(type = VisibilityRequired.Type.VERSION, args = "{#project, #version}")
     public ResponseEntity<?> downloadVersion(final ProjectTable project, final ProjectVersionTable version, final Platform platform, final HttpServletResponse response) {
+        return this.downloadService.downloadVersion(project, version, platform);
+    }
+
+    @Override
+    @RateLimit(overdraft = 10, refillTokens = 2)
+    @VisibilityRequired(type = VisibilityRequired.Type.VERSION, args = "{#project, #version}")
+    public ResponseEntity<?> downloadVersion(final String author, final ProjectTable project, final ProjectVersionTable version, final Platform platform, final HttpServletResponse response) {
         return this.downloadService.downloadVersion(project, version, platform);
     }
 

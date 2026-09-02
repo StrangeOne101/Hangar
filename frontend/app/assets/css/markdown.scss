@@ -1,0 +1,313 @@
+@use "markdown-light";
+@use "markdown-dark";
+
+.markdown {
+  table tr > th {
+    padding: 5px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 36px;
+    margin-bottom: 12px;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 28px;
+    margin-bottom: 6px;
+  }
+
+  > :first-child,
+  > * > :first-child {
+    margin-top: 0;
+  }
+
+  line-height: 1.65;
+
+  img {
+    max-width: 100%;
+    display: inline-block;
+    margin-block: 0;
+    vertical-align: middle;
+  }
+
+  table tr > td,
+  .page-rendered table tr > th {
+    border: 1px solid;
+    padding: 10px;
+  }
+
+  code::before,
+  code::after {
+    content: "";
+  }
+
+  code {
+    border-radius: 3px;
+  }
+
+  :not(pre) > code {
+    padding: 0.1em 0.35em;
+  }
+
+  details {
+    margin-block: 16px;
+    padding: 0 12px;
+    border: 1px solid var(--gray-300);
+    border-radius: 6px;
+    background: var(--surface-sunken);
+
+    .dark & {
+      border-color: var(--gray-700);
+    }
+  }
+
+  details[open] {
+    padding-bottom: 12px;
+  }
+
+  summary {
+    margin: 0 -12px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+
+    list-style: none;
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 0;
+      height: 0;
+      margin-right: 8px;
+      vertical-align: middle;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-left: 5px solid currentColor;
+      transition: transform 0.15s ease;
+    }
+
+    &:hover {
+      background: var(--surface-sunken-hover);
+    }
+  }
+
+  details[open] > summary {
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--gray-300);
+    border-radius: 5px 5px 0 0;
+
+    &::before {
+      transform: rotate(90deg);
+    }
+
+    .dark & {
+      border-bottom-color: var(--gray-700);
+    }
+  }
+
+  details > summary + * {
+    margin-top: 0;
+  }
+
+  a code &:hover {
+    text-decoration: underline;
+  }
+
+  h1,
+  h2 {
+    border-bottom: 1px solid;
+    padding-bottom: 5px;
+  }
+
+  .headeranchor {
+    visibility: hidden;
+    text-decoration: none;
+  }
+
+  .headeranchor:hover {
+    visibility: visible;
+  }
+
+  h1:hover,
+  h2:hover,
+  h3:hover,
+  h4:hover,
+  h5:hover,
+  h6:hover {
+    .headeranchor {
+      visibility: visible;
+    }
+  }
+
+  .footnotes {
+    p {
+      display: inline-block;
+    }
+  }
+
+  &.inline {
+    p {
+      margin: 0;
+    }
+  }
+
+  blockquote {
+    margin: 0;
+    quotes: unset;
+    p:first-of-type::before,
+    p:first-of-type::after {
+      content: unset;
+    }
+  }
+
+  ul,
+  ol {
+    margin-block: 0.5em;
+    padding-inline-start: 1.5em;
+  }
+
+  li {
+    margin-block: 2px;
+    padding-inline-start: 0;
+
+    > p {
+      margin-block: 0;
+    }
+  }
+
+  li > ul,
+  li > ol {
+    margin: 0;
+  }
+
+  th,
+  td {
+    &[align="left"] {
+      text-align: left;
+    }
+
+    &[align="center"] {
+      text-align: center;
+    }
+
+    &[align="right"] {
+      text-align: right;
+    }
+
+    &[align="justify"] {
+      text-align: justify;
+    }
+  }
+
+  .markdown-alert {
+    padding: 0 1em;
+    margin-block: 16px;
+    border-left: 0.25em solid var(--alert-color, #444c56);
+
+    > p {
+      margin: 0;
+    }
+
+    .markdown-alert-title {
+      display: inline-flex;
+      align-items: center;
+      font-weight: 500;
+      color: var(--alert-color, #444c56);
+
+      .dark & > svg {
+        fill: #e0e6f0;
+      }
+    }
+  }
+
+  .markdown-alert-note {
+    --alert-color: #539bf5;
+  }
+
+  .markdown-alert-tip {
+    --alert-color: #57ab5a;
+  }
+
+  .markdown-alert-important {
+    --alert-color: #986ee2;
+  }
+
+  .markdown-alert-warning {
+    --alert-color: #c69026;
+  }
+
+  .markdown-alert-caution {
+    --alert-color: #e5534b;
+  }
+
+  summary {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      display: inline;
+    }
+  }
+}
+
+// override prism stuff
+.markdown pre[class*="language-"] {
+  border: none;
+  box-shadow: none;
+}
+
+// Active tailwind overrides specific to markdown.
+
+// Padding on first table row element
+.prose.markdown table tbody td:first-child {
+  padding-left: 10px;
+}
+
+// Padding on table header
+.prose.markdown table thead th:first-child {
+  padding-left: 5px;
+}
+
+// Adjust code font weight
+.prose.markdown code {
+  font-weight: 400;
+}
+
+// don't want display table on code stuff
+.token.table {
+  display: inline;
+}
+
+// ff is dum
+.prose :where(table):not(:where(.not-prose, .not-prose *)) {
+  padding-left: 1px;
+}
+
+/* doubled class beats prose's :where() */
+.markdown.markdown p {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown.markdown p:has(+ ul),
+.markdown.markdown p:has(+ ol) {
+  margin-bottom: 8px;
+}
+
+.markdown.markdown details > :last-child {
+  margin-bottom: 0;
+}

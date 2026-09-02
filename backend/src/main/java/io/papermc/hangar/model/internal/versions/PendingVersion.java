@@ -8,6 +8,7 @@ import io.papermc.hangar.model.common.Color;
 import io.papermc.hangar.model.common.Platform;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.util.EnumMap;
 import java.util.List;
@@ -20,40 +21,42 @@ public class PendingVersion {
 
     // @el(root: String)
     @NotBlank(message = "version.new.error.invalidVersionString")
-    private final @Validate(SpEL = "@validate.regex(#root, @hangarConfig.projects.versionNameRegex)", message = "version.new.error.invalidVersionString") String versionString;
+    private final @Validate(SpEL = "@validate.regex(#root, @'hangar-io.papermc.hangar.config.hangar.HangarConfig'.projects.versionNameRegex)", message = "version.new.error.invalidVersionString") String versionString;
     private final Map<Platform, Set<@Valid PluginDependency>> pluginDependencies;
+    @NotNull(message = "version.new.error.invalidNumOfPlatforms")
     @Size(min = 1, max = 3, message = "version.new.error.invalidNumOfPlatforms")
     private final Map<Platform, @Size(min = 1, message = "version.edit.error.noPlatformVersions") SortedSet<@NotBlank(message = "version.new.error.invalidPlatformVersion") String>> platformDependencies;
 
     // @el(root: String)
     @NotBlank(message = "version.new.error.noDescription")
-    private final @Validate(SpEL = "@validate.max(#root, @hangarConfig.pages.maxLen)", message = "page.new.error.maxLength") String description;
+    private final @Validate(SpEL = "@validate.max(#root, @'hangar-io.papermc.hangar.config.hangar.HangarConfig'.pages.maxLen)", message = "page.new.error.maxLength") String description;
+    @NotNull(message = "version.new.error.invalidNumOfPlatforms")
     @Size(min = 1, max = 3, message = "version.new.error.invalidNumOfPlatforms")
     private final List<@Valid PendingVersionFile> files;
 
     // @el(root: String)
     @NotBlank(message = "version.new.error.channel.noName")
-    private final @Validate(SpEL = "@validate.regex(#root, @hangarConfig.channels.nameRegex)", message = "channel.modal.error.invalidName") @Validate(SpEL = "@validations.max(#root, @hangarConfig.channels.maxNameLen)", message = "channel.modal.error.tooLongName") String channelName;
-    private final @Validate(SpEL = "@validations.max(#root, @hangarConfig.channels.maxDescriptionLen)", message = "channel.modal.error.tooLongDescription") String channelDescription;
+    private final @Validate(SpEL = "@validate.regex(#root, @'hangar-io.papermc.hangar.config.hangar.HangarConfig'.channels.nameRegex)", message = "channel.modal.error.invalidName") @Validate(SpEL = "@validations.max(#root, @'hangar-io.papermc.hangar.config.hangar.HangarConfig'.channels.maxNameLen)", message = "channel.modal.error.tooLongName") String channelName;
+    private final @Validate(SpEL = "@validations.max(#root, @'hangar-io.papermc.hangar.config.hangar.HangarConfig'.channels.maxDescriptionLen)", message = "channel.modal.error.tooLongDescription") String channelDescription;
     private final Color channelColor;
     private final Set<ChannelFlag> channelFlags;
 
     @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
     public PendingVersion(final String versionString, final Map<Platform, Set<PluginDependency>> pluginDependencies, final EnumMap<Platform, SortedSet<String>> platformDependencies, final String description, final List<PendingVersionFile> files, final String channelName, final String channelDescription, final @Nullable Color channelColor, final Set<ChannelFlag> channelFlags) {
         this.versionString = versionString;
-        this.pluginDependencies = pluginDependencies;
+        this.pluginDependencies = pluginDependencies != null ? pluginDependencies : new EnumMap<>(Platform.class);
         this.platformDependencies = platformDependencies;
         this.description = description;
         this.files = files;
         this.channelName = channelName;
         this.channelDescription = channelDescription;
         this.channelColor = channelColor;
-        this.channelFlags = channelFlags;
+        this.channelFlags = channelFlags != null ? channelFlags : Set.of();
     }
 
     public PendingVersion(final @Nullable String versionString, final Map<Platform, Set<PluginDependency>> pluginDependencies, final Map<Platform, SortedSet<String>> platformDependencies, final List<PendingVersionFile> files) {
         this.versionString = versionString;
-        this.pluginDependencies = pluginDependencies;
+        this.pluginDependencies = pluginDependencies != null ? pluginDependencies : new EnumMap<>(Platform.class);
         this.platformDependencies = platformDependencies;
         this.description = null;
         this.files = files;

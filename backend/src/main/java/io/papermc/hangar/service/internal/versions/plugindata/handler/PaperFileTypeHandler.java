@@ -6,6 +6,7 @@ import io.papermc.hangar.service.internal.versions.plugindata.handler.PaperFileT
 import java.io.BufferedReader;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -30,12 +31,10 @@ public class PaperFileTypeHandler extends FileTypeHandler<PaperFileData> {
     }
 
     @ConfigSerializable
-    public static class PaperFileData extends FileTypeHandler.FileData {
+    public static class PaperFileData extends FileData {
 
-        @Setting("depend")
-        private List<String> hardDepends;
-        @Setting("softdepend")
-        private List<String> softDepends;
+        @Setting("dependencies")
+        private Map<String, Map<String, Dependency>> dependencies;
         @Setting("api-version")
         private String apiVersion;
 
@@ -51,17 +50,19 @@ public class PaperFileTypeHandler extends FileTypeHandler<PaperFileData> {
         @Override
         protected @NotNull Set<PluginDependency> createPluginDependencies() {
             final Set<PluginDependency> dependencies = new HashSet<>();
-            if (this.hardDepends != null) {
-                for (final String hardDepend : this.hardDepends) {
-                    dependencies.add(PluginDependency.of(hardDepend, true, Platform.MINECRAFT));
-                }
-            }
-            if (this.softDepends != null) {
-                for (final String softDepend : this.softDepends) {
-                    dependencies.add(PluginDependency.of(softDepend, false, Platform.MINECRAFT));
+            if (this.dependencies != null) {
+                for (final Map.Entry<String, Map<String, Dependency>> entry : this.dependencies.entrySet()) {
+                    for (final Map.Entry<String, Dependency> dependencyEntry : entry.getValue().entrySet()) {
+                        final String dependencyName = dependencyEntry.getKey();
+                        final boolean required = dependencyEntry.getValue().required;
+                        dependencies.add(PluginDependency.of(dependencyName, required, Platform.MINECRAFT));
+                    }
                 }
             }
             return dependencies;
         }
+
+        @ConfigSerializable
+        record Dependency(boolean required) {}
     }
 }

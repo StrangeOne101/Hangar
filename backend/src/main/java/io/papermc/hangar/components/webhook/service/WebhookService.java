@@ -5,12 +5,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.papermc.hangar.components.webhook.dao.WebhookDAO;
 import io.papermc.hangar.components.webhook.model.DiscordWebhook;
 import io.papermc.hangar.components.webhook.model.event.ProjectEvent;
+import io.papermc.hangar.components.webhook.model.event.ProjectFlaggedEvent;
 import io.papermc.hangar.components.webhook.model.event.ProjectPublishedEvent;
 import io.papermc.hangar.components.webhook.model.event.VersionPublishedEvent;
 import io.papermc.hangar.components.webhook.model.event.WebhookEvent;
-import io.papermc.hangar.model.internal.job.Job;
-import io.papermc.hangar.model.internal.job.SendWebhookJob;
-import io.papermc.hangar.service.internal.JobService;
+import io.papermc.hangar.components.jobs.model.Job;
+import io.papermc.hangar.components.jobs.model.SendWebhookJob;
+import io.papermc.hangar.components.jobs.JobService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -60,6 +61,22 @@ public class WebhookService {
             "footer": {
               "text": "Platforms: {{platforms}}"
             }
+          }
+        ]
+        """;
+
+    private static final String discordProjectFlagTemplate = """
+        [
+          {
+            "id": {{id}},
+            "title": "Project {{author}}/{{name}} flagged for {{reason}}",
+            "color": 2326507,
+            "description": "{{comment}}",
+            "author": {
+              "name": "{{flaggerName}}",
+              "url": "{{flaggerUrl}}"
+            },
+            "url": "{{flagUrl}}"
           }
         ]
         """;
@@ -117,6 +134,7 @@ public class WebhookService {
         return switch (type) {
             case "discord_project" -> new DiscordWebhook(this.fillTemplate(discordProjectTemplate, event));
             case "discord_version" -> new DiscordWebhook(this.fillTemplate(discordVersionTemplate, event));
+            case "discord_project_flag"-> new DiscordWebhook(this.fillTemplate(discordProjectFlagTemplate, event));
             case "rest" -> event;
             default -> throw new IllegalArgumentException("Unknown webhook type: " + type);
         };
@@ -140,6 +158,12 @@ public class WebhookService {
         } else if (event instanceof final VersionPublishedEvent versionPublishedEvent) {
             template = template.replace("{{description}}", versionPublishedEvent.getDescription());
             template = template.replace("{{version}}", versionPublishedEvent.getVersion());
+        } else if (event instanceof final ProjectFlaggedEvent  projectFlaggedEvent) {
+            template = template.replace("{{flaggerName}}",  projectFlaggedEvent.getFlaggerName());
+            template = template.replace("{{flaggerUrl}}",  projectFlaggedEvent.getFlaggerUrl());
+            template = template.replace("{{flagUrl}}",  projectFlaggedEvent.getFlagUrl());
+            template = template.replace("{{reason}}",  projectFlaggedEvent.getReason());
+            template = template.replace("{{comment}}",  projectFlaggedEvent.getComment());
         }
 
         return template.replace("\n", "");

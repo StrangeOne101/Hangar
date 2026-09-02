@@ -9,6 +9,7 @@ import io.papermc.hangar.components.auth.model.db.UserCredentialTable;
 import io.papermc.hangar.components.auth.model.dto.SignupForm;
 import io.papermc.hangar.components.auth.model.dto.login.LoginResponse;
 import io.papermc.hangar.components.images.service.AvatarService;
+import io.papermc.hangar.components.index.IndexService;
 import io.papermc.hangar.db.customtypes.JSONB;
 import io.papermc.hangar.db.dao.internal.table.UserDAO;
 import io.papermc.hangar.exceptions.HangarApiException;
@@ -22,6 +23,7 @@ import io.papermc.hangar.service.ValidationService;
 import io.papermc.hangar.service.api.UsersApiService;
 import io.papermc.hangar.service.internal.BucketService;
 import io.papermc.hangar.service.internal.MailService;
+import io.papermc.hangar.service.internal.uploads.ProjectFiles;
 import jakarta.validation.constraints.NotEmpty;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
@@ -52,8 +54,10 @@ public class AuthService extends HangarComponent implements UserDetailsService {
     private final BucketService bucketService;
     private final TurnstileService turnstileService;
     private final AvatarService avatarService;
+    private final ProjectFiles projectFiles;
+    private final IndexService indexService;
 
-    public AuthService(final UserDAO userDAO, final UserCredentialDAO userCredentialDAO, final PasswordEncoder passwordEncoder, final ValidationService validationService, final VerificationService verificationService, final CredentialsService credentialsService, final HibpService hibpService, final MailService mailService, final TokenService tokenService, final UsersApiService usersApiService, final BucketService bucketService, final TurnstileService turnstileService, final AvatarService avatarService) {
+    public AuthService(final UserDAO userDAO, final UserCredentialDAO userCredentialDAO, final PasswordEncoder passwordEncoder, final ValidationService validationService, final VerificationService verificationService, final CredentialsService credentialsService, final HibpService hibpService, final MailService mailService, final TokenService tokenService, final UsersApiService usersApiService, final BucketService bucketService, final TurnstileService turnstileService, final AvatarService avatarService, final ProjectFiles projectFiles, final IndexService indexService) {
         this.userDAO = userDAO;
         this.userCredentialDAO = userCredentialDAO;
         this.passwordEncoder = passwordEncoder;
@@ -67,6 +71,8 @@ public class AuthService extends HangarComponent implements UserDetailsService {
         this.bucketService = bucketService;
         this.turnstileService = turnstileService;
         this.avatarService = avatarService;
+        this.projectFiles = projectFiles;
+        this.indexService = indexService;
     }
 
     @Transactional
@@ -84,7 +90,7 @@ public class AuthService extends HangarComponent implements UserDetailsService {
             this.turnstileService.validate(form.captcha());
         }
 
-        if (!this.config.isDisableRateLimiting()) {
+        if (!this.config.disableRateLimiting()) {
             Bucket bucket = this.bucketService.bucket("register-user", new RateLimit.Model(1, 1, 60 * 5, false, "register-user"));
             if (bucket != null && !bucket.tryConsume(1)) {
                 throw HangarApiException.rateLimited();
@@ -160,6 +166,15 @@ public class AuthService extends HangarComponent implements UserDetailsService {
 
     @Transactional
     public void handleUsernameChange(final UserTable user, final String newName) {
+        this.changeUsername(user, newName, true);
+    }
+
+    @Transactional
+    public void renameUser(final UserTable user, final String newName) {
+        this.changeUsername(user, newName, false);
+    }
+
+    private void changeUsername(final UserTable user, final String newName, final boolean enforceInterval) {
         // need to be a valid name
         if (!this.validationService.isValidUsername(newName)) {
             throw new HangarApiException("nav.user.error.invalidUsername");
@@ -170,12 +185,14 @@ public class AuthService extends HangarComponent implements UserDetailsService {
             throw new HangarApiException("That username is unavailable");
         }
         // check that last change was long ago
-        final List<UserNameChange> userNameHistory = this.userDAO.getUserNameHistory(user.getUuid());
-        if (!userNameHistory.isEmpty()) {
-            userNameHistory.sort(Comparator.comparing(UserNameChange::date).reversed());
-            final OffsetDateTime nextChange = userNameHistory.get(0).date().plusDays(this.config.user.nameChangeInterval());
-            if (nextChange.isAfter(OffsetDateTime.now())) {
-                throw new HangarApiException("You have to wait until " + nextChange.format(DateTimeFormatter.RFC_1123_DATE_TIME) + " before being able to change your username again");
+        if (enforceInterval) {
+            final List<UserNameChange> userNameHistory = this.userDAO.getUserNameHistory(user.getUuid());
+            if (!userNameHistory.isEmpty()) {
+                userNameHistory.sort(Comparator.comparing(UserNameChange::date).reversed());
+                final OffsetDateTime nextChange = userNameHistory.getFirst().date().plusDays(this.config.users().nameChangeInterval());
+                if (nextChange.isAfter(OffsetDateTime.now())) {
+                    throw new HangarApiException("You have to wait until " + nextChange.format(DateTimeFormatter.RFC_1123_DATE_TIME) + " before being able to change your username again");
+                }
             }
         }
         // do the change
@@ -184,6 +201,10 @@ public class AuthService extends HangarComponent implements UserDetailsService {
         this.userDAO.update(user);
         // record the change into the db
         this.userDAO.recordNameChange(user.getUuid(), oldName, newName);
+        this.projectFiles.renameUser(oldName, newName);
+        this.usersApiService.clearAuthorsCache();
+        this.usersApiService.clearStaffCache();
+        this.indexService.updateUserProjects(user.getUserId());
         // email
         this.mailService.queueMail(MailService.MailType.USERNAME_CHANGED, user.getEmail(), Map.of("oldName", oldName, "newName", newName));
     }

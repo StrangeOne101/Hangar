@@ -33,8 +33,10 @@ public class SentrySqlLogger implements SqlLogger {
         childSpan.setData("db.name", "hangar");
         childSpan.setData("code.namespace", "Hangar");
         childSpan.setData("code.lineno", "1");
-        childSpan.setData("code.filepath", context.getExtensionMethod().getMethod().getDeclaringClass().getSimpleName());
-        childSpan.setData("code.function", context.getExtensionMethod().getMethod().getName());
+        if (context.getExtensionMethod() != null) {
+            childSpan.setData("code.filepath", context.getExtensionMethod().getMethod().getDeclaringClass().getSimpleName());
+            childSpan.setData("code.function", context.getExtensionMethod().getMethod().getName());
+        }
         childSpan.setData("db.binding", context.getBinding().toString());
         context.define("span", childSpan);
     }

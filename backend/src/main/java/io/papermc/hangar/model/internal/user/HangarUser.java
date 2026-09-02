@@ -4,6 +4,7 @@ import io.papermc.hangar.db.customtypes.JSONB;
 import io.papermc.hangar.model.api.User;
 import io.papermc.hangar.model.api.UserNameChange;
 import io.papermc.hangar.model.common.Permission;
+import io.papermc.hangar.model.common.UnreadCount;
 import jakarta.annotation.Nullable;
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -18,13 +19,14 @@ public class HangarUser extends User {
     private final String language;
     private final String theme;
     private final JSONB socials;
+    private final @Nullable OffsetDateTime lastSeenChangelogAt;
 
     @Nullable
     private String accessToken;
     @Nullable
     private Integer aal;
 
-    public HangarUser(final OffsetDateTime createdAt, final String name, final String tagline, final List<Long> roles, final long projectCount, final boolean locked, @Nullable final List<UserNameChange> nameHistory, final long id, final UUID uuid, final String email, final List<Integer> readPrompts, final String language, final String theme, final String avatarUrl, final JSONB socials) {
+    public HangarUser(final OffsetDateTime createdAt, final String name, final String tagline, final List<Long> roles, final long projectCount, final boolean locked, @Nullable final List<UserNameChange> nameHistory, final long id, final UUID uuid, final String email, final List<Integer> readPrompts, final String language, final String theme, final String avatarUrl, final JSONB socials, final @Nullable OffsetDateTime lastSeenChangelogAt) {
         super(createdAt, id, name, tagline, roles, projectCount, locked, nameHistory, avatarUrl, socials);
         this.uuid = uuid;
         this.email = email;
@@ -32,6 +34,11 @@ public class HangarUser extends User {
         this.language = language;
         this.theme = theme;
         this.socials = socials;
+        this.lastSeenChangelogAt = lastSeenChangelogAt;
+    }
+
+    public @Nullable OffsetDateTime getLastSeenChangelogAt() {
+        return this.lastSeenChangelogAt;
     }
 
     public HeaderData getHeaderData() {
@@ -85,8 +92,7 @@ public class HangarUser extends User {
     }
 
     public record HeaderData(Permission globalPermission,
-                             long unreadNotifications,
-                             long unansweredInvites,
+                             UnreadCount unreadCount,
                              long unresolvedFlags,
                              long projectApprovals,
                              long reviewQueueCount,

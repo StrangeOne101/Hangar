@@ -30,9 +30,20 @@ public interface Filter<F extends FilterInstance, V> {
     @NotNull
     F create(NativeWebRequest webRequest);
 
+    /**
+     * Quotes and escapes a value for use as a string literal in a MeiliSearch filter expression, so
+     * user-controlled input cannot break out of the filter (e.g. to bypass the visibility clause).
+     */
+    static String escapeMeili(final String value) {
+        return '"' + value.replace("\\", "\\\\").replace("\"", "\\\"") + '"';
+    }
+
     interface FilterInstance {
 
         void createSql(StringBuilder sb, SqlStatement<?> q);
-    }
 
+        default void createMeili(StringBuilder sb) {
+            throw new UnsupportedOperationException("not implemented yet: " + this.getClass().getSimpleName() + "#createMeili");
+        }
+    }
 }

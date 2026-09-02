@@ -1,8 +1,9 @@
 package io.papermc.hangar.service.internal;
 
 import io.papermc.hangar.HangarComponent;
+import io.papermc.hangar.components.jobs.JobService;
 import io.papermc.hangar.config.hangar.MailConfig;
-import io.papermc.hangar.model.internal.job.SendMailJob;
+import io.papermc.hangar.components.jobs.model.SendMailJob;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import java.io.BufferedReader;
@@ -25,7 +26,10 @@ public class MailService extends HangarComponent {
         USERNAME_CHANGED("ProjectKorra Username Changed", "username-changed.html"),
         PASSWORD_CHANGED("ProjectKorra Password Changed", "password-changed.html"),
         PASSWORD_RESET("ProjectKorra Password Reset", "password-reset.html"),
-        EMAIL_CONFIRMATION("ProjectKorra Email Verification", "email-verification.html");
+        EMAIL_CONFIRMATION("ProjectKorra Email Verification", "email-verification.html"),
+        ACCOUNT_DELETION_REQUESTED("ProjectKorra Account Deletion Requested", "account-deletion-requested.html"),
+        ACCOUNT_DELETION_CANCELLED("ProjectKorra Account Deletion Cancelled", "account-deletion-cancelled.html"),
+        ACCOUNT_DELETED("ProjectKorra Account Deleted", "account-deleted.html");
 
         final String subject;
         final String text;
@@ -76,7 +80,7 @@ public class MailService extends HangarComponent {
     public void sendMail(final String subject, final String recipient, final String text) throws MessagingException {
         final MimeMessage message = this.mailSender.createMimeMessage();
         final MimeMessageHelper helper = new MimeMessageHelper(message, true);
-        helper.setFrom(this.config.mail.from());
+        helper.setFrom(this.config.mail().from());
         helper.setTo(recipient);
         helper.setSubject(subject);
         helper.setText(text, true);

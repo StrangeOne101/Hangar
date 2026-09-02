@@ -2,9 +2,10 @@ import IconsResolver from "unplugin-icons/resolver";
 // import EslintPlugin from "vite-plugin-eslint";
 import Components from "unplugin-vue-components/vite";
 import { defineNuxtConfig } from "nuxt/config";
+import devtoolsJson from "vite-plugin-devtools-json";
 
 // noinspection ES6PreferShortImport
-import { loadLocales } from "./src/i18n/i18n-util";
+import { loadLocales } from "./app/i18n/i18n-util";
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -28,10 +29,10 @@ export default defineNuxtConfig({
   app: {
     pageTransition: {
       name: "page",
-      mode: "in-out",
+      // in-out orphans pages: entering through Suspense never completes, so the old page never leaves
+      mode: "out-in",
     },
   },
-  srcDir: "src",
   runtimeConfig: {
     backendHost: "",
     public: {
@@ -41,6 +42,15 @@ export default defineNuxtConfig({
       sentry: {
         dsn: "",
         environment: "",
+        tracePropagationTargets: [
+          "http://localhost:3333",
+          "https://hangar.papermc.dev",
+          "https://hangar.papermc.io",
+          "http://hangar-backend:8080",
+          "http://localhost:8080",
+        ],
+        debug: false,
+        tracesSampleRate: 1,
       },
     },
   },
@@ -53,35 +63,22 @@ export default defineNuxtConfig({
     "@sentry/nuxt/module",
     "@nuxtjs/turnstile",
     "floating-vue/nuxt",
+    "unplugin-icons/nuxt",
     [
-      "unplugin-icons/nuxt",
-      {
-        autoInstall: true,
-      },
-    ],
-    [
-      "./src/module/backendData",
+      "./modules/backendData",
       {
         serverUrl: process.env.BACKEND_DATA_HOST,
       },
     ],
-    "./src/module/componentsFix",
+    "./modules/componentsFix",
   ],
   i18n: {
-    vueI18n: "./src/i18n/i18n.config.ts",
+    vueI18n: "../app/i18n/i18n.config.ts",
     strategy: "no_prefix",
-    lazy: true,
-    langDir: "../src/i18n/locales/processed",
+    langDir: "../app/i18n/locales/processed",
     defaultLocale: "en",
     locales: loadLocales(),
     detectBrowserLanguage: false,
-    compilation: {
-      strictMessage: false,
-    },
-    bundle: {
-      runtimeOnly: true,
-      dropMessageCompiler: true,
-    },
   },
   vite: {
     plugins: [
@@ -97,6 +94,8 @@ export default defineNuxtConfig({
         ],
         dts: "types/generated/icons.d.ts",
       }),
+      // https://github.com/ChromeDevTools/vite-plugin-devtools-json
+      devtoolsJson(),
     ],
     ssr: {
       // Workaround until they support native ESM
@@ -109,6 +108,34 @@ export default defineNuxtConfig({
         },
       },
     },
+    optimizeDeps: {
+      include: [
+        "@headlessui/vue",
+        "@vuelidate/core",
+        "@vuelidate/validators",
+        "accept-language-parser", // CJS
+        "axios",
+        "debug", // CJS
+        "dompurify",
+        "easymde", // CJS
+        "filesize",
+        "github-slugger",
+        "jwt-decode",
+        "lodash-es",
+        "marked",
+        "marked-alert",
+        "marked-extended-tables",
+        "marked-linkify-it",
+        "nprogress", // CJS
+        "prismjs", // CJS
+        "qs", // CJS
+        "rapidoc", // CJS
+        "universal-cookie",
+      ],
+    },
+  },
+  build: {
+    transpile: ["form-data"],
   },
   experimental: {
     writeEarlyHints: false,
@@ -119,8 +146,8 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: "build",
     tsConfig: {
-      include: ["./types/typed-router.d.ts"],
       compilerOptions: {
+        types: ["bun"],
         strictNullChecks: true,
         noUnusedLocals: true,
       },
@@ -134,7 +161,7 @@ export default defineNuxtConfig({
     },
   },
   nitro: {
-    preset: "bun",
+    preset: "node_server",
     compressPublicAssets: false,
     timing: false,
   },

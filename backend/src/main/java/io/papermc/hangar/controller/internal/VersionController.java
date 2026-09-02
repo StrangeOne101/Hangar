@@ -32,11 +32,10 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.boot.web.server.servlet.context.ServletComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,7 +49,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 // @el(projectId: long, author: String, slug: String, versionString: String, platform: io.papermc.hangar.model.common.Platform)
 @RestController
-@Secured("ROLE_USER")
 @RateLimit(path = "version")
 @ServletComponentScan(basePackageClasses = VersionControllerConfig.class)
 @RequestMapping(path = "/api/internal/versions")
@@ -101,7 +99,7 @@ public class VersionController extends HangarComponent {
     @PermissionRequired(type = PermissionType.PROJECT, perms = NamedPermission.EDIT_VERSION, args = "{#projectId}")
     @PostMapping(path = "/version/{projectId}/{versionId}/saveDescription", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void saveDescription(@PathVariable final long projectId, @PathVariable final long versionId, @RequestBody @Valid final StringContent stringContent) {
-        if (stringContent.getContent().length() > this.config.pages.maxLen()) {
+        if (stringContent.getContent().length() > this.config.pages().maxLen()) {
             throw new HangarApiException(HttpStatus.BAD_REQUEST, "page.new.error.maxLength");
         }
 

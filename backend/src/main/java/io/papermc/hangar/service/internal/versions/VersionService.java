@@ -1,6 +1,7 @@
 package io.papermc.hangar.service.internal.versions;
 
 import io.papermc.hangar.HangarComponent;
+import io.papermc.hangar.components.index.IndexService;
 import io.papermc.hangar.db.dao.internal.table.projects.ProjectsDAO;
 import io.papermc.hangar.db.dao.internal.table.versions.ProjectVersionsDAO;
 import io.papermc.hangar.db.dao.internal.table.versions.downloads.ProjectVersionDownloadsDAO;
@@ -11,7 +12,7 @@ import io.papermc.hangar.model.db.projects.ProjectTable;
 import io.papermc.hangar.model.db.versions.ProjectVersionTable;
 import io.papermc.hangar.model.internal.logs.LogAction;
 import io.papermc.hangar.model.internal.logs.contexts.VersionContext;
-import io.papermc.hangar.service.internal.admin.StatService;
+import io.papermc.hangar.components.stats.StatService;
 import io.papermc.hangar.service.internal.file.FileService;
 import io.papermc.hangar.service.internal.projects.ProjectFactory;
 import io.papermc.hangar.service.internal.uploads.ProjectFiles;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,9 +41,10 @@ public class VersionService extends HangarComponent {
     private final ProjectsDAO projectsDAO;
     private final FileService fileService;
     private final StatService statService;
+    private final IndexService indexService;
 
     @Autowired
-    public VersionService(final ProjectVersionsDAO projectVersionDAO, final ProjectVisibilityService projectVisibilityService, final ProjectVersionVisibilityService projectVersionVisibilityService, final ProjectVersionDownloadsDAO projectVersionDownloadsDAO, final ProjectFiles projectFiles, final ProjectsDAO projectsDAO, final FileService fileService, final StatService statService) {
+    public VersionService(final ProjectVersionsDAO projectVersionDAO, final ProjectVisibilityService projectVisibilityService, final ProjectVersionVisibilityService projectVersionVisibilityService, final ProjectVersionDownloadsDAO projectVersionDownloadsDAO, final ProjectFiles projectFiles, final ProjectsDAO projectsDAO, final FileService fileService, final StatService statService, @Lazy final IndexService indexService) {
         this.projectVersionsDAO = projectVersionDAO;
         this.projectVisibilityService = projectVisibilityService;
         this.projectVersionVisibilityService = projectVersionVisibilityService;
@@ -50,6 +53,7 @@ public class VersionService extends HangarComponent {
         this.projectsDAO = projectsDAO;
         this.fileService = fileService;
         this.statService = statService;
+        this.indexService = indexService;
     }
 
     @Transactional
@@ -114,8 +118,9 @@ public class VersionService extends HangarComponent {
             return;
         }
 
+        final ProjectTable project = this.projectsDAO.getById(projectId);
         final List<ProjectVersionTable> projectVersionTables = this.projectVersionsDAO.getProjectVersions(projectId);
-        if (projectVersionTables.stream().filter(pv -> pv.getVisibility() == Visibility.PUBLIC).count() <= 1 && pvt.getVisibility() == Visibility.PUBLIC) {
+        if (project != null && project.getVisibility() == Visibility.PUBLIC && projectVersionTables.stream().filter(pv -> pv.getVisibility() == Visibility.PUBLIC).count() <= 1 && pvt.getVisibility() == Visibility.PUBLIC) {
             this.projectVisibilityService.changeVisibility(projectId, Visibility.NEW, "Visibility reset to new because no public version exists");
         }
 
@@ -145,6 +150,8 @@ public class VersionService extends HangarComponent {
 
         final ProjectTable project = this.projectsDAO.getById(projectVersionTable.getProjectId());
         this.projectFiles.renameVersion(project.getOwnerName(), project.getSlug(), oldVersion, compactNewName);
+
+        this.indexService.updateVersion(projectVersionTable.getVersionId());
     }
 
     @Transactional
@@ -158,6 +165,8 @@ public class VersionService extends HangarComponent {
         this.actionLogger.version(LogAction.VERSION_DELETED.create(VersionContext.of(pt.getId(), pvt.getId()), "Deleted: " + comment, pvt.getVisibility().getTitle()));
         this.projectVersionsDAO.delete(pvt);
         this.fileService.deleteDirectory(this.projectFiles.getVersionDir(pt.getOwnerName(), pt.getSlug(), pvt.getVersionString()));
+
+        this.indexService.removeVersion(pvt.getVersionId());
     }
 
     @Transactional
@@ -178,6 +187,7 @@ public class VersionService extends HangarComponent {
         }
         this.projectVersionVisibilityService.changeVisibility(pvt, Visibility.PUBLIC, "Version Restored");
         this.actionLogger.version(LogAction.VERSION_DELETED.create(VersionContext.of(projectId, pvt.getId()), "Version Restored", Visibility.SOFTDELETE.getTitle()));
+        this.indexService.updateVersion(pvt.getVersionId());
     }
 
     public void trackDownload(final long versionId, final Platform platform) {
